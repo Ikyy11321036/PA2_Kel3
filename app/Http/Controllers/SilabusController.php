@@ -18,13 +18,8 @@ class SilabusController extends Controller
     public function indexagama()
     {
         $agamasilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'agama')
-<<<<<<< HEAD
             ->where('agama', 'true')
             ->get();
-=======
-        ->where('agama', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isiagama', compact('agamasilabus'));
     }
 
@@ -41,13 +36,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'agama',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -75,21 +65,13 @@ class SilabusController extends Controller
     public function update(Request $request, $id)
     {
         $agamas = Silabus::find($id);
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> origin/master
         $validateData = $request->validate([
             'nama_materi' => 'max:255',
             'silabus' => 'max:255',
             'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
         ], [
-<<<<<<< HEAD
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
@@ -123,13 +105,8 @@ class SilabusController extends Controller
     public function indexppkn()
     {
         $ppknsilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'ppkn')
-<<<<<<< HEAD
             ->where('ppkn', 'true')
             ->get();
-=======
-        ->where('ppkn', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isippkn', compact('ppknsilabus'));
     }
 
@@ -146,13 +123,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'ppkn',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -180,7 +152,6 @@ class SilabusController extends Controller
     public function updateppkn(Request $request, $id)
     {
         $ppkns = Silabus::find($id);
-<<<<<<< HEAD
 
         $validateData = $request->validate([
             'nama_materi' => 'required|max:255',
@@ -192,22 +163,11 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        
-        $validateData = $request->validate([
-            'ppkn' => 'max:255',
-            'silabus_ppkn' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'ppkn.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_ppkn.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
             $validateData['file'] = $filename;
             $validateData['ppkn'] = 'true';
@@ -215,14 +175,6 @@ class SilabusController extends Controller
 
         $ppkns->nama_materi = $validateData['nama_materi'];
         $ppkns->silabus = $validateData['silabus'];
-=======
-            $request->file('file')->move('filesilabuspkn/', $filename);
-            $validateData['file'] = $filename;
-        }
-
-        $ppkns->ppkn = $validateData['ppkn'];
-        $ppkns->silabus_ppkn = $validateData['silabus_ppkn'];
->>>>>>> origin/master
         if (isset($validateData['file'])) {
             $ppkns->file = $validateData['file'];
         }
@@ -244,13 +196,8 @@ class SilabusController extends Controller
     public function indexindo()
     {
         $indosilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'indo')
-<<<<<<< HEAD
             ->where('indo', 'true')
             ->get();
-=======
-        ->where('indo', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isiindo', compact('indosilabus'));
     }
 
@@ -267,13 +214,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'indo',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -301,7 +243,6 @@ class SilabusController extends Controller
     public function updateindo(Request $request, $id)
     {
         $indos = Silabus::find($id);
-<<<<<<< HEAD
 
         $validateData = $request->validate([
             'nama_materi' => 'required|max:255',
@@ -313,22 +254,11 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        
-        $validateData = $request->validate([
-            'indo' => 'max:255',
-            'silabus_indo' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'indo.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_indo.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
             $validateData['file'] = $filename;
             $validateData['indo'] = 'true';
@@ -336,14 +266,6 @@ class SilabusController extends Controller
 
         $indos->nama_materi = $validateData['nama_materi'];
         $indos->silabus = $validateData['silabus'];
-=======
-            $request->file('file')->move('filesilabusindo/', $filename);
-            $validateData['file'] = $filename;
-        }
-
-        $indos->indo = $validateData['indo'];
-        $indos->silabus_indo = $validateData['silabus_indo'];
->>>>>>> origin/master
         if (isset($validateData['file'])) {
             $indos->file = $validateData['file'];
         }
@@ -365,13 +287,8 @@ class SilabusController extends Controller
     public function indexmtk()
     {
         $mtksilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'mtk')
-<<<<<<< HEAD
             ->where('mtk', 'true')
             ->get();
-=======
-        ->where('mtk', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isimtk', compact('mtksilabus'));
     }
 
@@ -388,13 +305,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'mtk',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -422,7 +334,6 @@ class SilabusController extends Controller
     public function updatemtk(Request $request, $id)
     {
         $mtks = Silabus::find($id);
-<<<<<<< HEAD
 
         $validateData = $request->validate([
             'nama_materi' => 'required|max:255',
@@ -434,22 +345,11 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        
-        $validateData = $request->validate([
-            'mtk' => 'max:255',
-            'silabus_mtk' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'mtk.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_mtk.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
             $validateData['file'] = $filename;
             $validateData['mtk'] = 'true';
@@ -457,14 +357,6 @@ class SilabusController extends Controller
 
         $mtks->nama_materi = $validateData['nama_materi'];
         $mtks->silabus = $validateData['silabus'];
-=======
-            $request->file('file')->move('filesilabusmtk/', $filename);
-            $validateData['file'] = $filename;
-        }
-
-        $mtks->mtk = $validateData['mtk'];
-        $mtks->silabus_mtk = $validateData['silabus_mtk'];
->>>>>>> origin/master
         if (isset($validateData['file'])) {
             $mtks->file = $validateData['file'];
         }
@@ -474,10 +366,7 @@ class SilabusController extends Controller
         return redirect('indexsilabus')->with('Data berhasil diperbaharui!');
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
     public function deletemtk($id)
     {
         $datamtk = Silabus::find($id);
@@ -490,13 +379,8 @@ class SilabusController extends Controller
     public function indexipa()
     {
         $ipasilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'ipa')
-<<<<<<< HEAD
             ->where('ipa', 'true')
             ->get();
-=======
-        ->where('ipa', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isiipa', compact('ipasilabus'));
     }
 
@@ -513,13 +397,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'ipa',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -547,7 +426,6 @@ class SilabusController extends Controller
     public function updateipa(Request $request, $id)
     {
         $ipas = Silabus::find($id);
-<<<<<<< HEAD
 
         $validateData = $request->validate([
             'nama_materi' => 'required|max:255',
@@ -559,22 +437,11 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        
-        $validateData = $request->validate([
-            'ipa' => 'max:255',
-            'silabus_ipa' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'ipa.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_ipa.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
             $validateData['file'] = $filename;
             $validateData['ipa'] = 'true';
@@ -582,14 +449,6 @@ class SilabusController extends Controller
 
         $ipas->nama_materi = $validateData['nama_materi'];
         $ipas->silabus = $validateData['silabus'];
-=======
-            $request->file('file')->move('filesilabusipa/', $filename);
-            $validateData['file'] = $filename;
-        }
-
-        $ipas->ipa = $validateData['ipa'];
-        $ipas->silabus_ipa = $validateData['silabus_ipa'];
->>>>>>> origin/master
         if (isset($validateData['file'])) {
             $ipas->file = $validateData['file'];
         }
@@ -611,13 +470,8 @@ class SilabusController extends Controller
     public function indexips()
     {
         $ipssilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'ips')
-<<<<<<< HEAD
             ->where('ips', 'true')
             ->get();
-=======
-        ->where('ips', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isiips', compact('ipssilabus'));
     }
 
@@ -634,13 +488,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'ips',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -668,7 +517,6 @@ class SilabusController extends Controller
     public function updateips(Request $request, $id)
     {
         $ipss = Silabus::find($id);
-<<<<<<< HEAD
 
         $validateData = $request->validate([
             'nama_materi' => 'required|max:255',
@@ -680,36 +528,17 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        
-        $validateData = $request->validate([
-            'ips' => 'max:255',
-            'silabus_ips' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'ips.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_ips.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
             $validateData['file'] = $filename;
         }
 
         $ipss->nama_materi = $validateData['nama_materi'];
         $ipss->silabus = $validateData['silabus'];
-=======
-            $request->file('file')->move('filesilabusips/', $filename);
-            $validateData['file'] = $filename;
-        }
-
-        $ipss->ips = $validateData['ips'];
-        $ipss->silabus_ips = $validateData['silabus_ips'];
->>>>>>> origin/master
         if (isset($validateData['file'])) {
             $ipss->file = $validateData['file'];
         }
@@ -731,13 +560,8 @@ class SilabusController extends Controller
     public function indexsbk()
     {
         $sbksilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'sbk')
-<<<<<<< HEAD
             ->where('sbk', 'true')
             ->get();
-=======
-        ->where('sbk', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isisbk', compact('sbksilabus'));
     }
 
@@ -754,13 +578,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'sbk',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -788,7 +607,6 @@ class SilabusController extends Controller
     public function updatesbk(Request $request, $id)
     {
         $sbks = Silabus::find($id);
-<<<<<<< HEAD
 
         $validateData = $request->validate([
             'nama_materi' => 'required|max:255',
@@ -800,35 +618,17 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        
-        $validateData = $request->validate([
-            'nama_materi' => 'max:255',
-            'silabus_sbk' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_sbk.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
-=======
-            $request->file('file')->move('filesilabussbk/', $filename);
->>>>>>> origin/master
             $validateData['file'] = $filename;
         }
 
         $sbks->nama_materi = $validateData['nama_materi'];
-<<<<<<< HEAD
         $sbks->silabus = $validateData['silabus'];
-=======
-        $sbks->silabus_sbk = $validateData['silabus_sbk'];
->>>>>>> origin/master
         if (isset($validateData['file'])) {
             $sbks->file = $validateData['file'];
         }
@@ -850,13 +650,8 @@ class SilabusController extends Controller
     public function indexpenjas()
     {
         $penjassilabus = Silabus::select('nama_materi', 'silabus', 'file', 'id', 'penjas')
-<<<<<<< HEAD
             ->where('penjas', 'true')
             ->get();
-=======
-        ->where('penjas', 'true')
-        ->get();
->>>>>>> origin/master
         return view('pages.Silabus.isipenjas', compact('penjassilabus'));
     }
 
@@ -873,13 +668,8 @@ class SilabusController extends Controller
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
             'penjas',
         ], [
-<<<<<<< HEAD
             'nama_materi.required' => 'Judul Silabus harus diisi',
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
-=======
-            'nama_materi.required' => 'Nama Materi harus diisi',
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
->>>>>>> origin/master
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
             'file.required' => 'Silabus harus diisi',
@@ -906,7 +696,6 @@ class SilabusController extends Controller
 
     public function updatepenjas(Request $request, $id)
     {
-<<<<<<< HEAD
         $penjas = Silabus::find($id);
 
         $validateData = $request->validate([
@@ -919,23 +708,11 @@ class SilabusController extends Controller
             'nama_materi.max' => 'Judul Silabus terlalu panjang harap mengurangi',
             'silabus.required' => 'Informasi silabus harus diisi',
             'silabus.max' => 'Informasi terlalu panjang harap menguranginya',
-=======
-        $penjass = Silabus::find($id);
-        
-        $validateData = $request->validate([
-            'nama_materi' => 'max:255',
-            'silabus_pes' => 'max:255',
-            'file' => 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
-        ], [
-            'nama_materi.max' => 'Nama Materi terlalu panjang harap mengurangi',
-            'silabus_pes.max' => 'Informasi terlalu panjang harap menguranginya',
->>>>>>> origin/master
             'file.mimes' => 'Silabus hanya menerima pdf,doc,docx,xls,xlsx,ppt,pptx'
         ]);
 
         if ($request->hasFile('file')) {
             $filename = $request->file('file')->getClientOriginalName();
-<<<<<<< HEAD
             $request->file('file')->move('filesilabus/', $filename);
             $validateData['file'] = $filename;
         }
@@ -947,19 +724,6 @@ class SilabusController extends Controller
         }
 
         $penjas->save();
-=======
-            $request->file('file')->move('filesilabuspes/', $filename);
-            $validateData['file'] = $filename;
-        }
-
-        $penjass->nama_materi = $validateData['nama_materi'];
-        $penjass->silabus_pes = $validateData['silabus_pes'];
-        if (isset($validateData['file'])) {
-            $penjass->file = $validateData['file'];
-        }
-
-        $penjass->save();
->>>>>>> origin/master
 
         return redirect('indexsilabus')->with('Data berhasil diperbaharui!');
     }
@@ -971,8 +735,4 @@ class SilabusController extends Controller
         return redirect('indexsilabus')->with('Data berhasil dihapus!');
     }
     // Akhir Controller Silabus Penjas
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master
