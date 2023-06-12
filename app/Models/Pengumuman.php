@@ -12,7 +12,11 @@ class Pengumuman extends Model
     protected $table = "pengumuman";
     protected $primarykey = "id";
     protected $fillable = [
+<<<<<<< HEAD
         'hari_tanggal', 'judul', 'deskripsi', 'file', 'name'];
+=======
+        'hari_tanggal', 'judul', 'deskripsi'];
+>>>>>>> origin/master
 
     public function allData()
     {

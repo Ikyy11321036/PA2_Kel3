@@ -48,7 +48,11 @@
 											<div class="row">
 												<div class="col-md-6 col-sm-6 col-6">
 													@auth
+<<<<<<< HEAD
 													@if(Auth::check() && Auth::user()->role == 'admin')
+=======
+													@if(Auth::user()->role == 'admin')
+>>>>>>> origin/master
 													<div class="btn-group">
 														<a href="/tambahkelas6" id="addRow" class="btn btn-primary">
 															Tambah Jadwal <i class="fa fa-plus"></i>

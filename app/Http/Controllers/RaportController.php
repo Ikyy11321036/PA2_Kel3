@@ -32,7 +32,11 @@ class RaportController extends Controller
     public function store1(Request $request)
     {
         $validateData = $request->validate([
+<<<<<<< HEAD
             'username' => 'required|unique:nilai,username',
+=======
+            'username' => 'required'|'unique:nilai,username',
+>>>>>>> origin/master
             'kelas' => 'required',
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
@@ -53,13 +57,22 @@ class RaportController extends Controller
 
     public function edit1($id)
     {
+<<<<<<< HEAD
         $edit1 = Raport::find($id);
+=======
+        $edit1 = User::find($id);
+>>>>>>> origin/master
         return view('pages.Raport.edit', compact('edit1'));
     }
 
     public function update1(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
+=======
+            'username' => 'required',
+            'kelas' => 'required',
+>>>>>>> origin/master
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
             'kkm' => 'required|numeric',
@@ -70,6 +83,11 @@ class RaportController extends Controller
         ]);
 
         $edit1 = Raport::find($id);
+<<<<<<< HEAD
+=======
+        $edit1->username = $request->input('username');
+        $edit1->kelas = $request->input('kelas');
+>>>>>>> origin/master
         $edit1->tugas = $request->input('tugas');
         $edit1->ujian = $request->input('ujian');
         $edit1->jumlah_nilai = $request->input('jumlah_nilai');
@@ -122,7 +140,11 @@ class RaportController extends Controller
     public function store2(Request $request)
     {
         $validateData = $request->validate([
+<<<<<<< HEAD
             'username' => 'required|unique:nilai,username',
+=======
+            'username' => 'required'|'unique:nilai,username',
+>>>>>>> origin/master
             'kelas' => 'required',
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
@@ -143,13 +165,22 @@ class RaportController extends Controller
 
     public function edit2($id)
     {
+<<<<<<< HEAD
         $edit2 = Raport::find($id);
+=======
+        $edit2 = User::find($id);
+>>>>>>> origin/master
         return view('pages.Raport.edit2', compact('edit2'));
     }
 
     public function update2(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
+=======
+            'username' => 'required',
+            'kelas' => 'required',
+>>>>>>> origin/master
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
             'kkm' => 'required|numeric',
@@ -160,6 +191,11 @@ class RaportController extends Controller
         ]);
 
         $edit2 = Raport::find($id);
+<<<<<<< HEAD
+=======
+        $edit2->username = $request->input('username');
+        $edit2->kelas = $request->input('kelas');
+>>>>>>> origin/master
         $edit2->tugas = $request->input('tugas');
         $edit2->ujian = $request->input('ujian');
         $edit2->jumlah_nilai = $request->input('jumlah_nilai');
@@ -212,7 +248,11 @@ class RaportController extends Controller
     public function store3(Request $request)
     {
         $validateData = $request->validate([
+<<<<<<< HEAD
             'username' => 'required|unique:nilai,username',
+=======
+            'username' => 'required'|'unique:nilai,username',
+>>>>>>> origin/master
             'kelas' => 'required',
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
@@ -233,13 +273,22 @@ class RaportController extends Controller
 
     public function edit3($id)
     {
+<<<<<<< HEAD
         $edit3 = Raport::find($id);
+=======
+        $edit3 = User::find($id);
+>>>>>>> origin/master
         return view('pages.Raport.edit3', compact('edit3'));
     }
 
     public function update3(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
+=======
+            'username' => 'required',
+            'kelas' => 'required',
+>>>>>>> origin/master
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
             'kkm' => 'required|numeric',
@@ -250,6 +299,11 @@ class RaportController extends Controller
         ]);
 
         $edit3 = Raport::find($id);
+<<<<<<< HEAD
+=======
+        $edit3->username = $request->input('username');
+        $edit3->kelas = $request->input('kelas');
+>>>>>>> origin/master
         $edit3->tugas = $request->input('tugas');
         $edit3->ujian = $request->input('ujian');
         $edit3->jumlah_nilai = $request->input('jumlah_nilai');
@@ -302,7 +356,11 @@ class RaportController extends Controller
     public function store4(Request $request)
     {
         $validateData = $request->validate([
+<<<<<<< HEAD
             'username' => 'required|unique:nilai,username',
+=======
+            'username' => 'required'|'unique:nilai,username',
+>>>>>>> origin/master
             'kelas' => 'required',
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
@@ -323,13 +381,22 @@ class RaportController extends Controller
 
     public function edit4($id)
     {
+<<<<<<< HEAD
         $edit4 = Raport::find($id);
+=======
+        $edit4 = User::find($id);
+>>>>>>> origin/master
         return view('pages.Raport.edit4', compact('edit4'));
     }
 
     public function update4(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
+=======
+            'username' => 'required',
+            'kelas' => 'required',
+>>>>>>> origin/master
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
             'kkm' => 'required|numeric',
@@ -340,6 +407,11 @@ class RaportController extends Controller
         ]);
 
         $edit4 = Raport::find($id);
+<<<<<<< HEAD
+=======
+        $edit4->username = $request->input('username');
+        $edit4->kelas = $request->input('kelas');
+>>>>>>> origin/master
         $edit4->tugas = $request->input('tugas');
         $edit4->ujian = $request->input('ujian');
         $edit4->jumlah_nilai = $request->input('jumlah_nilai');
@@ -392,7 +464,11 @@ class RaportController extends Controller
     public function store5(Request $request)
     {
         $validateData = $request->validate([
+<<<<<<< HEAD
             'username' => 'required|unique:nilai,username',
+=======
+            'username' => 'required'|'unique:nilai,username',
+>>>>>>> origin/master
             'kelas' => 'required',
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
@@ -413,13 +489,22 @@ class RaportController extends Controller
 
     public function edit5($id)
     {
+<<<<<<< HEAD
         $edit5 = Raport::find($id);
+=======
+        $edit5 = User::find($id);
+>>>>>>> origin/master
         return view('pages.Raport.edit5', compact('edit5'));
     }
 
     public function update5(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
+=======
+            'username' => 'required',
+            'kelas' => 'required',
+>>>>>>> origin/master
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
             'kkm' => 'required|numeric',
@@ -430,6 +515,11 @@ class RaportController extends Controller
         ]);
 
         $edit5 = Raport::find($id);
+<<<<<<< HEAD
+=======
+        $edit5->username = $request->input('username');
+        $edit5->kelas = $request->input('kelas');
+>>>>>>> origin/master
         $edit5->tugas = $request->input('tugas');
         $edit5->ujian = $request->input('ujian');
         $edit5->jumlah_nilai = $request->input('jumlah_nilai');
@@ -482,7 +572,11 @@ class RaportController extends Controller
     public function store6(Request $request)
     {
         $validateData = $request->validate([
+<<<<<<< HEAD
             'username' => 'required|unique:nilai,username',
+=======
+            'username' => 'required'|'unique:nilai,username',
+>>>>>>> origin/master
             'kelas' => 'required',
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
@@ -503,13 +597,22 @@ class RaportController extends Controller
 
     public function edit6($id)
     {
+<<<<<<< HEAD
         $edit6 = Raport::find($id);
+=======
+        $edit6 = User::find($id);
+>>>>>>> origin/master
         return view('pages.Raport.edit6', compact('edit6'));
     }
 
     public function update6(Request $request, $id)
     {
         $request->validate([
+<<<<<<< HEAD
+=======
+            'username' => 'required',
+            'kelas' => 'required',
+>>>>>>> origin/master
             'tugas' => 'required|numeric',
             'ujian' => 'required|numeric',
             'kkm' => 'required|numeric',
@@ -520,6 +623,11 @@ class RaportController extends Controller
         ]);
 
         $edit6 = Raport::find($id);
+<<<<<<< HEAD
+=======
+        $edit6->username = $request->input('username');
+        $edit6->kelas = $request->input('kelas');
+>>>>>>> origin/master
         $edit6->tugas = $request->input('tugas');
         $edit6->ujian = $request->input('ujian');
         $edit6->jumlah_nilai = $request->input('jumlah_nilai');

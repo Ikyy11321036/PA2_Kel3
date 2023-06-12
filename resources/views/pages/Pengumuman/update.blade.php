@@ -31,6 +31,7 @@
                                         <a href="#tab2" data-bs-toggle="tab"> Grid View </a>
                                     </li>
                                 </ul> -->
+<<<<<<< HEAD
 
 					<form action="{{ url('update-pengumuman', $attention->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
@@ -56,6 +57,33 @@
 												<div class="container">
 													<form class="form-horizontal">
 														<fieldset>
+=======
+					
+					<form action="{{ url('update-pengumuman', $attention->id) }}" method="POST" enctype="multipart/form-data">
+					@csrf
+					<div class="tab-content">
+						<div class="tab-pane active fontawesome-demo" id="tab1">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="card card-box">
+										<div class="card-head">
+											<div class="tools">
+												<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+												<a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+												<a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+											</div>
+										</div>
+										<div class="card-body ">
+											<div class="row">
+												<div class="col-md-6 col-sm-6 col-6">
+												</div>
+											</div>
+										</div>
+										<table class="table table-striped table-bordered table-hover table-checkable order-column valign-middle" id="example4">
+											<div class="container">
+												<form class="form-horizontal">
+                                                <fieldset>
+>>>>>>> origin/master
 															<legend>Masukkan Data</legend>
 															<div class="form-group">
 																<label class="control-label col-sm-2" for="judul">Judul Pengumuman</label>
@@ -71,11 +99,16 @@
 															<div class="form-group">
 																<label class="control-label col-sm-2" for="deskripsi">Isi Pengumuman</label>
 																<div class="col-sm-6">
+<<<<<<< HEAD
 																	<textarea name="deskripsi" id="deskripsi" placeholder="Masukkan Isi Pengumuman" cols="85" rows="10">{{ $attention->deskripsi }}</textarea>
+=======
+                                                                    <textarea name="deskripsi" id="deskripsi" placeholder="Masukkan Isi Pengumuman" value="{{ $attention->deskripsi }}" cols="85" rows="10"></textarea>
+>>>>>>> origin/master
 																	@error('deskripsi')
 																	<div class="alert alert-danger my-3 col-sm-6" role="alert">
 																		{{ $message }}
 																	</div>
+<<<<<<< HEAD
 																	@enderror
 																</div>
 															</div>
@@ -84,12 +117,26 @@
 																<div class="col-sm-6">
 																	<input type="file" name="file" id="file" class="form-control" value="{{ $attention->file }}">
 																	@error('file')
+=======
+																	@enderror													
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-sm-2" for="hari_tanggal">Judul Pengumuman</label>
+																<div class="col-sm-6">
+																	<input type="date" name="hari_tanggal" id="hari_tanggal" class="form-control" value="{{ $attention->hari_tanggal }}">
+																	@error('hari_tanggal')
+>>>>>>> origin/master
 																	<div class="alert alert-danger my-3 col-sm-6" role="alert">
 																		{{ $message }}
 																	</div>
 																	@enderror
 																</div>
+<<<<<<< HEAD
 															</div>
+=======
+															</div>									
+>>>>>>> origin/master
 															<div class="form-group">
 																<div class="col-sm-offset-2 col-sm-10">
 																	<button type="submit" class="btn btn-success">Simpan</button>
@@ -97,14 +144,24 @@
 																</div>
 															</div>
 														</fieldset>
+<<<<<<< HEAD
 													</form>
 												</div>
 											</table>
 										</div>
+=======
+												</form>
+											</div>
+										</table>
+>>>>>>> origin/master
 									</div>
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
+=======
+					</div>
+>>>>>>> origin/master
 					</form>
 				</div>
 			</div>

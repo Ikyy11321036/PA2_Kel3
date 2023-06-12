@@ -455,8 +455,13 @@ class JadwalmapelController extends Controller
     public function edit4($id)
     {
         $murid4 = Jadwalmapel::find($id);
+<<<<<<< HEAD
         $jadwaledit4 = MataPelajaran::where('tingkat_kelas', 'Kelas 4')->get(['nama_matapelajaran']);
         return view('pages.Jadwal.update4', compact('murid4', 'jadwaledit4'));
+=======
+        $jadwal4 = MataPelajaran::where('tingkat_kelas', 'Kelas 4')->get(['nama_matapelajaran']);
+        return view('pages.Jadwal.update4', compact('murid4', 'jadwal4'));
+>>>>>>> origin/master
     }
 
     public function update4(Request $request, $id)
@@ -583,8 +588,13 @@ class JadwalmapelController extends Controller
     public function edit5($id)
     {
         $murid5 = Jadwalmapel::find($id);
+<<<<<<< HEAD
         $jadwaledit5 = MataPelajaran::where('tingkat_kelas', 'Kelas 5')->get(['nama_matapelajaran']);
         return view('pages.Jadwal.update5', compact('murid5', 'jadwaledit5'));
+=======
+        $jadwal5 = MataPelajaran::where('tingkat_kelas', 'Kelas 5')->get(['nama_matapelajaran']);
+        return view('pages.Jadwal.update5', compact('murid5', 'jadwal5'));
+>>>>>>> origin/master
     }
 
     public function update5(Request $request, $id)
@@ -711,8 +721,13 @@ class JadwalmapelController extends Controller
     public function edit6($id)
     {
         $murid6 = Jadwalmapel::find($id);
+<<<<<<< HEAD
         $jadwaledit6 = MataPelajaran::where('tingkat_kelas', 'Kelas 6')->get(['nama_matapelajaran']);
         return view('pages.Jadwal.update6', compact('murid6', 'jadwaledit6'));
+=======
+        $jadwal6 = MataPelajaran::where('tingkat_kelas', 'Kelas 6')->get(['nama_matapelajaran']);
+        return view('pages.Jadwal.update6', compact('murid6', 'jadwal6'));
+>>>>>>> origin/master
     }
 
     public function update6(Request $request, $id)

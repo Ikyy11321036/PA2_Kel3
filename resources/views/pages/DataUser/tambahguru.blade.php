@@ -94,11 +94,14 @@
                                                                         <option value="" disabled selected>Pilih Jenis Kelamin</option>
                                                                         <option value="Laki-Laki" {{ old('Laki-Laki') == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
                                                                         <option value="Perempuan" {{ old('Perempuan') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+<<<<<<< HEAD
                                                                         @error('jenis_kelamin')
                                                                         <div class="alert alert-danger my-3 col-sm-6" role="alert">
                                                                             {{ $message }}
                                                                         </div>
                                                                         @enderror
+=======
+>>>>>>> origin/master
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
@@ -129,11 +132,35 @@
                                                                         <select class="form-control @error('jabatan') is-invalid @enderror" id="jabatan" name="jabatan">
                                                                             <option value="" disabled selected>Pilih Jabatan</option>
                                                                             <option value="Guru" {{ old('jabatan') == 'Guru' ? 'selected' : '' }}>Guru</option>
+<<<<<<< HEAD
                                                                             @error('jabatan')
+=======
+                                                                        </select>
+                                                                    </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-sm-2" for="agama">Agama</label>
+                                                                    <div class="col-sm-6">
+                                                                        <select class="form-control @error('agama') is-invalid @enderror" id="agama" name="agama">
+                                                                            <option value="" disabled selected>Pilih Agama</option>
+                                                                            <option value="Protestan" {{ old('Protestan') == 'Protestan' ? 'selected' : '' }}>Protestan</option>
+                                                                            <option value="Katolik" {{ old('Katolik') == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                                                            <option value="Islam" {{ old('Islam') == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                                                            <option value="Hindu" {{ old('Hindu') == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                                                            <option value="Buddha" {{ old('Buddha') == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                                                            <option value="Konghucu" {{ old('Konghucu') == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-sm-2" for="alamat">Alamat</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat" value="{{ old('alamat') }}">
+                                                                            @error('alamat')
+>>>>>>> origin/master
                                                                             <div class="alert alert-danger my-3 col-sm-6" role="alert">
                                                                                 {{ $message }}
                                                                             </div>
                                                                             @enderror
+<<<<<<< HEAD
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -204,6 +231,49 @@
                                                                                 <button type="reset" class="btn btn-danger">Reset</button>
                                                                             </div>
                                                                         </div>
+=======
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-sm-2" for="foto">Gambar</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input id="password-confirm" type="file" name="foto" class="form-control" name="foto" autocomplete="new-password">
+                                                                            @error('foto')
+                                                                            <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-sm-2" for="password">Kata Sandi</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input id="password" type="password" name="password" placeholder="Kata Sandi" class="form-control" name="password" autocomplete="new-password">
+                                                                            @error('password')
+                                                                            <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-sm-2" for="password_confirmation">Konfirmasi Kata Sandi</label>
+                                                                        <div class="col-sm-6">
+                                                                            <input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="Konfirmasi Kata Sandi" name="password_confirmation" autocomplete="new-password">
+                                                                            @error('password_confirmation')
+                                                                            <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                                                            <button type="reset" class="btn btn-danger">Reset</button>
+                                                                        </div>
+                                                                    </div>
+>>>>>>> origin/master
                                                         </fieldset>
                                                     </form>
                                                 </div>

@@ -54,7 +54,11 @@
 										<div class="card-body ">
 											<div class="row">
 												<div class="col-md-6 col-sm-6 col-6">
+<<<<<<< HEAD
 												@if(Auth::check() && Auth::user()->role == 'admin')
+=======
+												@if(Auth::user()->role == 'admin')
+>>>>>>> origin/master
                                                 <div class="btn-group">
                                                     <a href="{{ route('silabusppkn') }}" id="addRow" class="btn btn-primary">
                                                         Tambah Silabus <i class="fa fa-plus"></i>
@@ -68,7 +72,11 @@
 												<tbody>
 													<tr>
 														<td>
+<<<<<<< HEAD
 															<h4>Download Silabus: <a href="{{ asset('filesilabus/'.$rowppkn->file) }}"> {{ $rowppkn->nama_materi }} </a></h4>
+=======
+															<h4>Download Silabus: <a href="{{ asset('filesilabuspkn/'.$rowppkn->file) }}"> {{ $rowppkn->nama_materi }} </a></h4>
+>>>>>>> origin/master
 															<h5>Mengenai Silabus: {{ $rowppkn->silabus }}</h5>
 														</td>
 														@auth

@@ -15,10 +15,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     background-image: url('/slash/pencil.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     
+=======
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+>>>>>>> origin/master
   }
 
   .wrapper {
@@ -151,6 +155,7 @@
       </div>
       @endif
       <div class="spasi1">
+<<<<<<< HEAD
         <div class="input-box">
           <input id="name" type="text" name="username" placeholder="Nama Lengkap" value="{{ old('name') }}" autofocus autocomplete="name">
           @error('username')
@@ -178,17 +183,50 @@
           <!-- <h3>Daftarkan Akun Baru <a href="{{ route('register') }}">Siswa</a></h3> -->
           <h3>Masuk Sebagai Akun <a href="{{ route('guest') }}">Tamu</a></h3>
         </div>
+=======
+      <div class="input-box">
+        <input id="name" type="text" name="username" placeholder="Nama Lengkap" value="{{ old('name') }}" autofocus autocomplete="name">
+        @error('username')
+        <div class="alert alert-danger my-3 col-sm-6" role="alert">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+      </div>
+      <div class="spasi2">
+      <div class="input-box">
+        <input id="password" type="password" name="password" placeholder="Kata Sandi" name="password" autocomplete="new-password">
+        @error('password')
+        <div class="alert alert-danger my-3 col-sm-6" role="alert">
+          {{ $message }}
+        </div>
+        @enderror
+      </div>
+      </div>
+      <div class="spasi3">
+      <div class="input-box button">
+        <input type="submit" name="button" value="Kirim">
+      </div>
+      <div class="text">
+        <!-- <h3>Daftarkan Akun Baru <a href="{{ route('register') }}">Siswa</a></h3> -->
+        <h3>Masuk Sebagai Akun <a href="{{ route('guest') }}">Tamu</a></h3>
+      </div>
+>>>>>>> origin/master
       </div>
     </form>
   </div>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 </html>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 
 <script>
+<<<<<<< HEAD
   $(document).ready(function() {
     $('form').submit(function(e) {
       e.preventDefault();
@@ -202,4 +240,19 @@
       });
     });
   });
+=======
+	$(document).ready(function() {
+		$('form').submit(function(e) {
+			e.preventDefault();
+			var form = this;
+			swal({
+				title: "Berhasil Login",
+				text: "Selamat Datang",
+				icon: "success",
+			}).then(function() {
+				form.submit();
+			});
+		});
+	});
+>>>>>>> origin/master
 </script>

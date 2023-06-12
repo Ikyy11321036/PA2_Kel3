@@ -65,7 +65,11 @@
     @php
     $key=1;
     @endphp
+<<<<<<< HEAD
     @foreach ($data2 as $row)
+=======
+    @foreach ($data as $row)
+>>>>>>> origin/master
   <tr>
     <td style="text-align:center">{{ $key++ }}</td>
     <td style="text-align:center">{{ $row->namasiswa }}</td>

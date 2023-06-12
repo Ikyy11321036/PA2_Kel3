@@ -34,6 +34,9 @@ class User extends Model implements Authenticatable
         'role',
     ];
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     use HasFactory, Notifiable, AuthenticableTrait;
 }

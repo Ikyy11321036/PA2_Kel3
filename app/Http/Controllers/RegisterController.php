@@ -14,8 +14,13 @@ class RegisterController extends Controller
     public function viewkepsek()
     {
         $kepsek = User::where('role', 'admin')
+<<<<<<< HEAD
             ->where('jabatan', 'Kepala Sekolah')
             ->get();
+=======
+                   ->where('jabatan', 'Kepala Sekolah')
+                   ->get();
+>>>>>>> origin/master
         return view('pages.DataUser.kepsek', compact('kepsek'));
     }
 
@@ -27,8 +32,13 @@ class RegisterController extends Controller
     public function viewguru()
     {
         $guru = User::where('role', 'admin')
+<<<<<<< HEAD
             ->where('jabatan', 'Guru')
             ->get();
+=======
+                   ->where('jabatan', 'Guru')
+                   ->get();
+>>>>>>> origin/master
         return view('pages.DataUser.guru', compact('guru'));
     }
 
@@ -40,8 +50,13 @@ class RegisterController extends Controller
     public function viewmurid()
     {
         $siswa = User::where('role', 'user')
+<<<<<<< HEAD
             ->orderBy('kelas', 'asc')
             ->get();
+=======
+                    ->orderBy('kelas', 'asc')
+                    ->get();
+>>>>>>> origin/master
         return view('pages.DataUser.siswa', compact('siswa'));
     }
 
@@ -64,6 +79,7 @@ class RegisterController extends Controller
             'alamat' => 'required|max:100',
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'],
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+<<<<<<< HEAD
         ], [
             'username.required' => 'Username harus diisi.',
             'username.string' => 'Username harus berupa teks.',
@@ -94,6 +110,8 @@ class RegisterController extends Controller
             'foto.image' => 'File yang diunggah harus berupa gambar.',
             'foto.mimes' => 'File gambar harus berformat jpeg, png, jpg, atau gif.',
             'foto.max' => 'Ukuran file gambar maksimal 2MB.',
+=======
+>>>>>>> origin/master
         ]);
 
         if ($request->hasFile('foto')) {
@@ -124,6 +142,7 @@ class RegisterController extends Controller
             'alamat' => 'required|max:100',
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'],
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+<<<<<<< HEAD
         ], [
             'username.required' => 'Username harus diisi.',
             'username.string' => 'Username harus berupa teks.',
@@ -154,6 +173,8 @@ class RegisterController extends Controller
             'foto.image' => 'File yang diunggah harus berupa gambar.',
             'foto.mimes' => 'File gambar harus berformat jpeg, png, jpg, atau gif.',
             'foto.max' => 'Ukuran file gambar maksimal 2MB.',
+=======
+>>>>>>> origin/master
         ]);
 
         if ($request->hasFile('foto')) {
@@ -175,6 +196,7 @@ class RegisterController extends Controller
     }
 
     public function login(Request $request)
+<<<<<<< HEAD
     {
         $request->validate([
             'username' => 'required',
@@ -200,6 +222,33 @@ class RegisterController extends Controller
             return redirect('login')->with('error', 'Username atau password salah');
         }
     }
+=======
+{
+    $request->validate([
+        'username' => 'required',
+        'password' => 'required',
+    ], [
+        'username.required' => 'Username wajib diisi',
+        'password.required' => 'Password wajib diisi',
+    ]);
+
+    $credentials = $request->only('username', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        session(['authenticated' => true]);
+        session(['username' => $user->username]);
+        session(['id' => $user->id]);
+        session(['email' => $user->email]);
+        session(['role' => $user->role]);
+
+        return redirect('dashboard');
+    } else {
+        return redirect('login')->with('error', 'Username atau password salah');
+    }
+}
+>>>>>>> origin/master
 
     public function home()
     {
@@ -213,7 +262,11 @@ class RegisterController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('success', 'Anda telah berhasil keluar. Silakan login kembali untuk mengakses halaman.')
+<<<<<<< HEAD
             ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+=======
+                                    ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+>>>>>>> origin/master
     }
 
     public function editkepsek($id)
@@ -235,6 +288,7 @@ class RegisterController extends Controller
             'agama' => 'string',
             'alamat' => 'max:100',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+<<<<<<< HEAD
         ], [
             'username.string' => 'Username harus berupa teks.',
             'username.max' => 'Username maksimal 255 karakter.',
@@ -251,6 +305,8 @@ class RegisterController extends Controller
             'foto.image' => 'File yang diunggah harus berupa gambar.',
             'foto.mimes' => 'File gambar harus berformat jpeg, png, jpg, atau gif.',
             'foto.max' => 'Ukuran file gambar maksimal 2MB.',
+=======
+>>>>>>> origin/master
         ]);
 
         $kepseks = User::find($id);
@@ -291,6 +347,7 @@ class RegisterController extends Controller
             'agama' => 'string',
             'alamat' => 'max:100',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+<<<<<<< HEAD
         ], [
             'username.string' => 'Username harus berupa teks.',
             'username.max' => 'Username maksimal 255 karakter.',
@@ -307,6 +364,8 @@ class RegisterController extends Controller
             'foto.image' => 'File yang diunggah harus berupa gambar.',
             'foto.mimes' => 'File gambar harus berformat jpeg, png, jpg, atau gif.',
             'foto.max' => 'Ukuran file gambar maksimal 2MB.',
+=======
+>>>>>>> origin/master
         ]);
 
         $teachers = User::find($id);
@@ -347,6 +406,7 @@ class RegisterController extends Controller
             'agama' => 'string',
             'alamat' => 'max:100',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+<<<<<<< HEAD
         ], [
             'username.string' => 'Username harus berupa teks.',
             'username.max' => 'Username maksimal 255 karakter.',
@@ -363,11 +423,17 @@ class RegisterController extends Controller
             'foto.image' => 'File yang diunggah harus berupa gambar.',
             'foto.mimes' => 'File gambar harus berformat jpeg, png, jpg, atau gif.',
             'foto.max' => 'Ukuran file gambar maksimal 2MB.',
+=======
+>>>>>>> origin/master
         ]);
 
         $students = User::find($id);
         $students->username = $request->input('username');
+<<<<<<< HEAD
         $students->nisn = $request->input('nisn');
+=======
+        $students->nip = $request->input('nisn');
+>>>>>>> origin/master
         $students->no_telepon = $request->input('no_telepon');
         $students->jenis_kelamin = $request->input('jenis_kelamin');
         $students->tgl_lahir = $request->input('tgl_lahir');
