@@ -54,11 +54,7 @@
 										<div class="card-body ">
 											<div class="row">
 												<div class="col-md-6 col-sm-6 col-6">
-<<<<<<< HEAD
 												@if(Auth::check() && Auth::user()->role == 'admin')
-=======
-												@if(Auth::user()->role == 'admin')
->>>>>>> origin/master
                                                 <div class="btn-group">
                                                     <a href="{{  route('silabusindo') }}" id="addRow" class="btn btn-primary">
                                                         Tambah Silabus <i class="fa fa-plus"></i>

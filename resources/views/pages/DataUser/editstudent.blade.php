@@ -211,11 +211,7 @@
             var form = this;
             swal({
                 title: "Berhasil",
-<<<<<<< HEAD
                 text: "Siswa Berhasil Diperbaharui!",
-=======
-                text: "Kepala Sekolah Berhasil Diperbaharui!",
->>>>>>> origin/master
                 icon: "success",
             }).then(function() {
                 form.submit();

@@ -121,11 +121,7 @@ Route::put('/profile/update', [ProfilController::class, 'update'])->name('profil
 Route::get('matapelajaran',  [JadwalmapelController::class,'index'])->name('matapelajaran');
 Route::get('matapelajaran2', [JadwalmapelController::class, 'index2'])->name('matapelajaran2');
 Route::get('matapelajaran3', [JadwalmapelController::class, 'index3'])->name('matapelajaran3');
-<<<<<<< HEAD
 Route::get('jadwal4', [JadwalmapelController::class, 'index4'])->name('jadwal4');
-=======
-Route::get('matapelajaran4', [JadwalmapelController::class, 'index4'])->name('matapelajaran4');
->>>>>>> origin/master
 Route::get('matapelajaran5', [JadwalmapelController::class, 'index5'])->name('matapelajaran5');
 Route::get('matapelajaran6', [JadwalmapelController::class, 'index6'])->name('matapelajaran6');
 
@@ -133,13 +129,10 @@ Route::get('matapelajaran6', [JadwalmapelController::class, 'index6'])->name('ma
 Route::get('pengumuman', [PengumumanController::class, 'indexpengumuman'])->name('pengumuman');
 Route::get('/isi-pengumuman/{id}', [PengumumanController::class, 'melihat'])->name('isipengumuman');
 
-<<<<<<< HEAD
 //API Pengumuman
 Route::post('/pengumuman/create', [PengumumanController::class, 'create']);
 Route::get('/pengumuman/create', [PengumumanController::class, 'showCreateForm']);
 
-=======
->>>>>>> origin/master
 //Mengelola dan Melihat Silabus
 Route::get('indexsilabus', [SilabusController::class, 'index'])->name('indexsilabus');
 Route::get('enteragamasilabus', [SilabusController::class, 'indexagama'])->name('indexagamasilabus');
@@ -191,61 +184,37 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']], function(){
 Route::get('/tambahraport1', [RaportController::class, 'tambah1'])->name('tambah1');
 Route::post('/menambahraport1', [RaportController::class, 'store1'])->name('add1');
 Route::get('edit-raport1/{id}', [RaportController::class, 'edit1'])->name('editraport1');
-<<<<<<< HEAD
 Route::post('/update-raport1/{id}', [RaportController::class, 'update1'])->name('update-raport1');
-=======
-Route::get('/update-raport1/{id}', [RaportController::class, 'update1'])->name('update-raport1');
->>>>>>> origin/master
 Route::get('/deleteraport1/{id}', [RaportController::class, 'deleteraport1'])->name('removeraport1.destroy');
 
 Route::get('/tambahraport2', [RaportController::class, 'tambah2'])->name('tambah2');
 Route::post('/menambahraport2', [RaportController::class, 'store2'])->name('add2');
 Route::get('edit-raport2/{id}', [RaportController::class, 'edit2'])->name('editraport2');
-<<<<<<< HEAD
 Route::post('/update-raport2/{id}', [RaportController::class, 'update2'])->name('update-raport2');
-=======
-Route::get('/update-raport2/{id}', [RaportController::class, 'update2'])->name('update-raport2');
->>>>>>> origin/master
 Route::get('/deleteraport2/{id}', [RaportController::class, 'deleteraport2'])->name('removeraport2.destroy');
 
 Route::get('/tambahraport3', [RaportController::class, 'tambah3'])->name('tambah3');
 Route::post('/menambahraport3', [RaportController::class, 'store3'])->name('add3');
 Route::get('edit-raport3/{id}', [RaportController::class, 'edit3'])->name('editraport3');
-<<<<<<< HEAD
 Route::post('/update-raport3/{id}', [RaportController::class, 'update3'])->name('update-raport3');
-=======
-Route::get('/update-raport3/{id}', [RaportController::class, 'update3'])->name('update-raport3');
->>>>>>> origin/master
 Route::get('/deleteraport3/{id}', [RaportController::class, 'deleteraport3'])->name('removeraport3.destroy');
 
 Route::get('/tambahraport4', [RaportController::class, 'tambah4'])->name('tambah4');
 Route::post('/menambahraport4', [RaportController::class, 'store4'])->name('add4');
 Route::get('edit-raport4/{id}', [RaportController::class, 'edit4'])->name('editraport4');
-<<<<<<< HEAD
 Route::post('/update-raport4/{id}', [RaportController::class, 'update4'])->name('update-raport4');
-=======
-Route::get('/update-raport4/{id}', [RaportController::class, 'update4'])->name('update-raport4');
->>>>>>> origin/master
 Route::get('/deleteraport4/{id}', [RaportController::class, 'deleteraport4'])->name('removeraport4.destroy');
 
 Route::get('/tambahraport5', [RaportController::class, 'tambah5'])->name('tambah5');
 Route::post('/menambahraport5', [RaportController::class, 'store5'])->name('add5');
 Route::get('edit-raport5/{id}', [RaportController::class, 'edit5'])->name('editraport5');
-<<<<<<< HEAD
 Route::post('/update-raport5/{id}', [RaportController::class, 'update5'])->name('update-raport5');
-=======
-Route::get('/update-raport5/{id}', [RaportController::class, 'update5'])->name('update-raport5');
->>>>>>> origin/master
 Route::get('/deleteraport5/{id}', [RaportController::class, 'deleteraport5'])->name('removeraport5.destroy');
 
 Route::get('/tambahraport6', [RaportController::class, 'tambah6'])->name('tambah6');
 Route::post('/menambahraport6', [RaportController::class, 'store6'])->name('add6');
 Route::get('edit-raport6/{id}', [RaportController::class, 'edit6'])->name('editraport6');
-<<<<<<< HEAD
 Route::post('/update-raport6/{id}', [RaportController::class, 'update6'])->name('update-raport6');
-=======
-Route::get('/update-raport6/{id}', [RaportController::class, 'update6'])->name('update-raport6');
->>>>>>> origin/master
 Route::get('/deleteraport6/{id}', [RaportController::class, 'deleteraport6'])->name('removeraport6.destroy');
 
 // Mengelola Mata Pelajaran

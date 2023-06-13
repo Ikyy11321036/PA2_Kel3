@@ -16,11 +16,8 @@ return new class extends Migration
             $table->string('hari_tanggal');
             $table->string('judul');
             $table->string('deskripsi');
-<<<<<<< HEAD
             $table->tinyInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-=======
->>>>>>> origin/master
             $table->timestamps();
         });
     }

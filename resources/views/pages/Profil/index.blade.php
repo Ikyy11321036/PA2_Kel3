@@ -2,7 +2,6 @@
 
 @section('content')
 <style>
-<<<<<<< HEAD
     body {
         background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     }
@@ -116,60 +115,12 @@
     .profile-tab p {
         font-weight: 600;
         color: #0062cc;
-=======
-    .card {
-        background-color: #fff;
-        border-radius: 5px;
-        border: none;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-    }
-
-    .card-title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .card-body {
-        padding: 20px;
-    }
-
-    .float-end {
-        float: right;
-    }
-
-    .img-fluid {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .text-secondary {
-        padding-top: 9px;
-    }
-
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 15px;
-    }
-
-    .col-sm-3 {
-        width: 25%;
-        padding-right: 15px;
-        padding-left: 15px;
-        float: left;
->>>>>>> origin/master
     }
 </style>
 
 <div class="page-content-wrapper">
-<<<<<<< HEAD
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-=======
-
->>>>>>> origin/master
     <div class="page-content">
         <div class="page-bar">
             <div class="page-title-breadcrumb">
@@ -211,7 +162,6 @@
                                                 <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                                             </div>
                                         </div>
-<<<<<<< HEAD
                                         <div class="container emp-profile">
                                             <form method="post">
                                                 <div class="row">
@@ -322,227 +272,12 @@
                                                                     <div class="col-md-6">
                                                                         <p>{{ $pengguna->agama }}</p>
                                                                     </div>
-=======
-                                        <div class="card-body ">
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6 col-6">
-
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Foto Profil</h5>
-                                                                        @auth
-                                                                        @if(Auth::user()->foto)
-                                                                        <img src="{{ asset('fotodata/'.$pengguna->foto) }}" alt="Foto Profil" class="img-fluid">
-                                                                        @else
-                                                                        <img alt="" class="img-circle " style="width:150px;" src="{{ asset('user/user.png' . Auth::user()->photo) }}" />
-                                                                        @endif
-                                                                        @endauth
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8">
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title">Informasi Profil</h5>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Nama Lengkap:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(Auth::user()->role == 'admin')
-                                                                                @if(empty($pengguna->username))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->username }}
-                                                                                @endif
-                                                                                @else
-                                                                                @if(empty($pengguna->username))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->username }}
-                                                                                @endif
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @if($pengguna->role == 'admin')
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">NIP:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->nip))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->nip }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @else
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">NISN:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->nisn))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->nisn }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @endif
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Tempat/Tanggal Lahir:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                {{ $pengguna->tempat_lahir }}, {{ date('d F Y', strtotime($pengguna->kelahiran)) }}
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Jenis Kelamin:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->jenis_kelamin))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->jenis_kelamin }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @if($pengguna->role == 'admin')
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Pangkat/Golongan:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->pangkat))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->pangkat }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Jabatan:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->jabatan))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->jabatan }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @endif
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Agama:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->agama))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->agama }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Alamat:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->alamat))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->alamat }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @if($pengguna->role == 'admin')
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">TMT Menjabat:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->menjabat))
-                                                                                -
-                                                                                @else
-                                                                                {{ date('d F Y', strtotime($pengguna->menjabat)) }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Lulus Sertifikasi:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->lulus_sertifikasi))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->lulus_sertifikasi }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @endif
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Motto:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->motto))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->motto }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Email:</h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->email))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->email }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-sm-4">
-                                                                                <h6 class="mb-0">Nomor Telepon: </h6>
-                                                                            </div>
-                                                                            <div class="col-sm-8 text-secondary">
-                                                                                @if(empty($pengguna->telpon))
-                                                                                -
-                                                                                @else
-                                                                                {{ $pengguna->telpon }}
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <a class="btn btn-success float-end" href="{{ route('profile.edit') }}">Edit Profil<i class="fa fa-gear"></i></a>
->>>>>>> origin/master
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-<<<<<<< HEAD
                                             </form>
-=======
-                                            </div>
->>>>>>> origin/master
                                         </div>
                                     </div>
                                 </div>
@@ -561,10 +296,7 @@
 </div>
 </div>
 
-<<<<<<< HEAD
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-=======
->>>>>>> origin/master
 @endsection

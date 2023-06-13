@@ -10,11 +10,7 @@ class CourseController extends Controller
 {
     public function view()
     {
-<<<<<<< HEAD
         $courses = MataPelajaran::orderBy('tingkat_kelas', 'asc')->get();
-=======
-        $courses = MataPelajaran::all();
->>>>>>> origin/master
         return view('pages.courses.main', compact('courses'));
     }
 
@@ -25,28 +21,12 @@ class CourseController extends Controller
 
     public function addmatapelajaran(Request $request)
     {
-<<<<<<< HEAD
         $validateData = $request->validate([
-=======
-        $request->validate([
->>>>>>> origin/master
             'nama_matapelajaran' => 'required|string|max:50',
             'tingkat_kelas' => 'required|string',
         ]);
 
-<<<<<<< HEAD
         $mapels = MataPelajaran::create($validateData);
-=======
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName();
-        $file->move('filecourse/', $filename);
-
-        $mataPelajaran = new MataPelajaran;
-        $mataPelajaran->nama_matapelajaran = $request->nama_matapelajaran;
-        $mataPelajaran->tingkat_kelas = $request->tingkat_kelas;
-        $mataPelajaran->file = $filename;
-        $mataPelajaran->save();
->>>>>>> origin/master
 
         return redirect('matapelajaransiswa')->with('success', 'Data berhasil ditambah!');
     }

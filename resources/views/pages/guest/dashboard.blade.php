@@ -84,11 +84,6 @@
         margin-top: 10px;
     }
 </style>
-<<<<<<< HEAD
-=======
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstraps/4.2.1/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
->>>>>>> origin/master
 <div class="page-content-wrapper">
     <div class="page-content">
         <div class="page-bar">

@@ -70,11 +70,7 @@
 															<div class="form-group">
 																<label class="control-label col-sm-2" for="deskripsi">Isi Pengumuman</label>
 																<div class="col-sm-6">
-<<<<<<< HEAD
 																	<textarea name="deskripsi" id="deskripsi" placeholder="Masukkan Isi Pengumuman" cols="85" rows="10">{{ old('deskripsi') }}</textarea>
-=======
-																	<textarea name="deskripsi" id="deskripsi" placeholder="Masukkan Isi Pengumuman" value="{{ old('deskripsi') }}" cols="85" rows="10"></textarea>
->>>>>>> origin/master
 																	@error('deskripsi')
 																	<div class="alert alert-danger my-3 col-sm-6" role="alert">
 																		{{ $message }}
@@ -83,17 +79,10 @@
 																</div>
 															</div>
 															<div class="form-group">
-<<<<<<< HEAD
 																<label class="control-label col-sm-2" for="file">File Pengumuman</label>
 																<div class="col-sm-6">
 																	<input type="file" name="file" id="file" class="form-control" value="{{ old('file') }}">
 																	@error('file')
-=======
-																<label class="control-label col-sm-2" for="hari_tanggal">Tanggal Pengumuman</label>
-																<div class="col-sm-6">
-																	<input type="date" name="hari_tanggal" id="hari_tanggal" class="form-control" value="{{ old('hari_tanggal') }}">
-																	@error('hari_tanggal')
->>>>>>> origin/master
 																	<div class="alert alert-danger my-3 col-sm-6" role="alert">
 																		{{ $message }}
 																	</div>

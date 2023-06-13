@@ -58,7 +58,6 @@
                                                     <form class="form-horizontal">
                                                         <fieldset>
                                                             <div class="form-group">
-<<<<<<< HEAD
                                                                 <h4>{!! nl2br(e($data->deskripsi)) !!}</h4>
                                                             </div>
                                                             @if($data->file)
@@ -67,13 +66,6 @@
                                                             <hr style="border:5px;">
                                                             <div class="form-group">
                                                                 <h5>Tanggal Dikirim: {{ \Carbon\Carbon::parse($data->created_at)->locale('id')->isoFormat('DD-MMMM-YYYY') }}</h5>
-=======
-                                                                <h4>{{ $data->deskripsi }}</h4>
-                                                            </div>
-                                                            <hr style="border:5px;">
-                                                            <div class="form-group">
-                                                                <h5>Tanggal Dikirim: {{ $data->hari_tanggal }}</h5>
->>>>>>> origin/master
                                                             </div>
                                                         </fieldset>
                                                     </form>

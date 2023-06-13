@@ -84,17 +84,9 @@
             margin-top: 10px;
         }
     </style>
-<<<<<<< HEAD
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="page-bar">
-=======
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstraps/4.2.1/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"> --}}
-    <div class="page-content-wrapper">
-        <div class="page-content">
-            <div class="page-bar">          p
->>>>>>> origin/master
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
                         <div class="page-title" style="text-align: center;">Dashboard</div>
@@ -156,7 +148,6 @@
                         <div class="info-box bg-b-blue">
                             <span class="info-box-icon push-bottom"><i data-feather="book"></i></span>
                             <div class="info-box-content">
-<<<<<<< HEAD
                                 <span class="info-box-text">Total Mata Pelajaran</span>
                                 @php
                                     $mapelCount = DB::table('mata_pelajaran')
@@ -165,10 +156,6 @@
                                 @endphp
 
                                 <span class="info-box-number">{{ $mapelCount }}</span>
-=======
-                                <span class="info-box-text">Total Course</span>
-                                <span class="info-box-number">10</span>
->>>>>>> origin/master
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 85%"></div>
                                 </div>
@@ -180,17 +167,10 @@
                     <!-- /.col -->
                     <div class="col-xl-3 col-md-6 col-12">
                         <div class="info-box bg-b-pink">
-<<<<<<< HEAD
                         <span class="info-box-icon push-bottom"><i data-feather="layers"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Kelas</span>
                                 <span class="info-box-number">6</span>
-=======
-                            <span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Fees Collection</span>
-                                <span class="info-box-number">13,921</span><span>$</span>
->>>>>>> origin/master
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 50%"></div>
                                 </div>
@@ -310,7 +290,6 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="card mt-5">
                 <div class="card-head">
                     <header>Jumlah Siswa SD Sitorus Godang</header>
@@ -404,41 +383,3 @@
         chart1();
     </script>
 @endpush
-=======
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.6.4.slim.js"
-                integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-            <script>
-                $('.delete').click(function() {
-                    var strukturid = $(this).attr('data-id');
-                    swal({
-                            title: "Apakah Anda Yakin?",
-                            text: "Anda Akan Menghapus Gambar Struktur Organisasi Tersebut",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                window.location = "/deletestruktur/" + strukturid;
-                                swal("Data Berhasil Dihapus", {
-                                    icon: "success",
-                                });
-                            } else {
-                                swal("Data Tidak Jadi Dihapus");
-                            }
-                        });
-                });
-            </script>
-
-            <script>
-                $(document).ready(function() {
-                    $('.carousel').carousel();
-                });
-            </script>
-        @endsection
->>>>>>> origin/master

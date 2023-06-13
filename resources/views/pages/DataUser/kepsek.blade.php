@@ -50,11 +50,7 @@
 											<div class="row">
 												<div class="col-md-6 col-sm-6 col-6">
 												@auth
-<<<<<<< HEAD
 												@if(Auth::check() && Auth::user()->role == 'admin')
-=======
-												@if(Auth::user()->role == 'admin')
->>>>>>> origin/master
 													<div class="btn-group">
 														<a href="{{  route('tambahkepsek') }}" id="addRow" class="btn btn-primary">
 															Tambah Kepala Sekolah <i class="fa fa-plus"></i>

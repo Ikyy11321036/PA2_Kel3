@@ -45,7 +45,6 @@
                                         <div class="card-body ">
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6 col-6">
-<<<<<<< HEAD
                                                 @if(Auth::check() && Auth::user()->role == 'admin')
                                                     <div class="btn-group">
                                                         <a href="{{ route('tambah6') }}" id="addRow" class="btn btn-primary">
@@ -55,17 +54,6 @@
                                                     @endif
                                                     <div class="btn-group">
                                                         <a href="/exportpdf6" id="addRow" class="btn btn-danger">
-=======
-                                                @if(Auth::user()->role == 'admin')
-                                                <div class="btn-group">
-                                                    <a href="{{  route('tambah6') }}" id="addRow" class="btn btn-primary">
-                                                        Tambah Nilai <i class="fa fa-plus"></i>
-                                                    </a>
-												</div>
-												@endif
-                                                    <div class="btn-group">
-                                                        <a href="/exportpdfraport6" id="addRow" class="btn btn-danger">
->>>>>>> origin/master
                                                             Ekspor PDF <i class="fa-solid fa-file-pdf"></i>
                                                         </a>
                                                     </div>

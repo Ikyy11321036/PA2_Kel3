@@ -1,7 +1,6 @@
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <!-- logo start -->
-<<<<<<< HEAD
         @auth
         <div class="page-logo">
             <a href="{{ ('dashboard') }}">
@@ -15,13 +14,6 @@
                 <span class="logo-default">SD Sitorus</span> </a>
         </div>
         @endauth
-=======
-        <div class="page-logo">
-            <a href="index.html">
-                <span class="logo-icon material-icons fa-rotate-45">school</span>
-                <span class="logo-default">SD Sitorus</span> </a>
-        </div>
->>>>>>> origin/master
         <!-- logo end -->
         <ul class="nav navbar-nav navbar-left in">
             <li><a href="#" class="menu-toggler sidebar-toggler"><i data-feather="menu"></i></a></li>
@@ -237,40 +229,24 @@
                         @auth
                         <li>
                             <a href="{{ route('profiluser') }}">
-<<<<<<< HEAD
                                 <i class="icon-user"></i> Profil </a>
-=======
-                                <i class="icon-user"></i> Profile </a>
->>>>>>> origin/master
                         </li>
                         @else
                         <li>
                             <a href="{{ route('guestaccess') }}">
-<<<<<<< HEAD
                                 <i class="icon-user"></i> Profil </a>
-=======
-                                <i class="icon-user"></i> Profile </a>
->>>>>>> origin/master
                         </li>
                         @endauth
                         @auth
                         <li>
                             <a href="{{ route('password.change') }}">
-<<<<<<< HEAD
                                 <i class="icon-settings"></i> Ubah Sandi
-=======
-                                <i class="icon-settings"></i> Settings
->>>>>>> origin/master
                             </a>
                         </li>
                         @else
                         <li>
                             <a href="{{ route('guestaccess') }}">
-<<<<<<< HEAD
                                 <i class="icon-settings"></i> Ubah Sandi
-=======
-                                <i class="icon-settings"></i> Settings
->>>>>>> origin/master
                             </a>
                         </li>
                         @endauth

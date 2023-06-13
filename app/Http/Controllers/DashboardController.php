@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\User;
-=======
->>>>>>> origin/master
 use App\Models\Struktur;
 use Illuminate\Http\Request;
 
@@ -17,7 +14,6 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $tampilan = Struktur::all();
-<<<<<<< HEAD
         $users = User::query();
 
         $currentYear = date('Y');
@@ -39,12 +35,6 @@ class DashboardController extends Controller
     }
 
     public function create()
-=======
-        return view('pages.dashboard.informasisekolah', compact('tampilan'));
-    }
-
-    public function create() 
->>>>>>> origin/master
     {
         return view('pages.guest.tambah');
     }
@@ -57,11 +47,6 @@ class DashboardController extends Controller
             'gambar.required' => 'Gambar harus diisi',
             'gambar.mimes' => 'Gambar harus memakai jpg,jpeg,png,gif,heic',
         ]);
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> origin/master
         if ($request->hasFile('gambar')) {
             $filename = $request->file('gambar')->getClientOriginalName();
             $request->file('gambar')->move('fotostruktur/', $filename);
@@ -69,11 +54,6 @@ class DashboardController extends Controller
         }
 
         $tampilan = Struktur::create($validateData);
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> origin/master
         return redirect('dashboard')->with('success', 'Data berhasil ditambahkan!');
     }
 

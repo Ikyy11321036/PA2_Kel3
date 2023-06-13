@@ -25,13 +25,10 @@ class RedirectIfAuthenticated
             }
         }
 
-<<<<<<< HEAD
         if (Auth::guard($guard)->check()) {
             return redirect('/login');
         }
 
-=======
->>>>>>> origin/master
         return $next($request);
     }
 }

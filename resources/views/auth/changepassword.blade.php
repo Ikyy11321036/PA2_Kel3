@@ -1,7 +1,6 @@
 @extends('template.layout')
 
 @section('content')
-<<<<<<< HEAD
 <style>
     body {
         background-color: #f8f9fa;
@@ -61,8 +60,6 @@
         margin-top: 20px;
     }
 </style>
-=======
->>>>>>> origin/master
 <div class="page-content-wrapper">
     <div class="page-content">
         <div class="page-bar">
@@ -89,7 +86,6 @@
                                     </li>
                                 </ul> -->
                     <div class="row">
-<<<<<<< HEAD
                         <form method="POST" action="{{ route('password.change') }}">
                             @csrf
                             <div class="container">
@@ -100,21 +96,6 @@
                                             <div class="form-group">
                                                 <label for="current_password">Kata Sandi Lama</label>
                                                 <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" placeholder="Masukkan Kata Sandi Anda Yang Lama" name="current_password" autofocus>
-=======
-                        <div class="card-head">
-                            <div class="card">
-                                <div class="card-header">{{ __('Change Password') }}</div>
-
-                                <div class="card-body">
-                                    <form method="POST" action="{{ route('password.change') }}">
-                                        @csrf
-
-                                        <div class="form-group row">
-                                            <label for="current_password" class="col-md-4 col-form-label text-md-right">Kata Sandi Lama</label>
-
-                                            <div class="col-md-6">
-                                                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" autofocus>
->>>>>>> origin/master
 
                                                 @error('current_password')
                                                 <span class="invalid-feedback" role="alert">
@@ -122,20 +103,10 @@
                                                 </span>
                                                 @enderror
                                             </div>
-<<<<<<< HEAD
 
                                             <div class="form-group">
                                                 <label for="password">Kata Sandi Baru</label>
                                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Kata Sandi Yang Baru" name="password">
-=======
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="password" class="col-md-4 col-form-label text-md-right">Kata Sandi Baru</label>
-
-                                            <div class="col-md-6">
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
->>>>>>> origin/master
 
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -143,7 +114,6 @@
                                                 </span>
                                                 @enderror
                                             </div>
-<<<<<<< HEAD
 
                                             <div class="form-group">
                                                 <label for="password_confirmation">Ulangi Kata Sandi</label>
@@ -157,30 +127,6 @@
                             </div>
                     </div>
                     </form>
-=======
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">Ulangi Kata Sandi</label>
-
-                                            <div class="col-md-6">
-                                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row mb-0">
-                                            <div class="col-md-6 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">
-                                                    Konfirmasi
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
->>>>>>> origin/master
                 </div>
             </div>
         </div>
@@ -194,7 +140,6 @@
 </div>
 </div>
 </div>
-<<<<<<< HEAD
 </div>
 </div>
 
@@ -234,11 +179,6 @@
         alertContainer.style.display = 'block';
     }
 </script>
-=======
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
->>>>>>> origin/master
 
 <script>
     $(document).ready(function() {
