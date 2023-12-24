@@ -24,6 +24,14 @@ class CourseController extends Controller
         $validateData = $request->validate([
             'nama_matapelajaran' => 'required|string|max:50',
             'tingkat_kelas' => 'required|string',
+            'deskripsi' => 'required|string',
+            'durasi' => 'required|string',
+        ],[
+            'nama_matapelajaran.required' => 'Nama Mata Pelajaran Harus Diisi',
+            'nama_matapelajaran.string' => 'Nama Mata Pelajaran Harus Menggunakan Huruf Saja',
+            'nama_matapelajaran.max' => 'Nama Mata Pelajaran Maksimal 50 Huruf',
+            'tingkat_kelas.required' => 'Tingkat Kelas Harus Diisi',
+            'tingkat_kelas.required' => 'Tingkat Kelas Hanya Dapat Huruf Saja',
         ]);
 
         $mapels = MataPelajaran::create($validateData);
@@ -42,15 +50,27 @@ class CourseController extends Controller
         $request->validate([
             'nama_matapelajaran' => 'string|max:50',
             'tingkat_kelas' => 'string',
+            'deskripsi' => 'string',
+            'durasi' => 'string',
         ]);
 
         $pelajaran = MataPelajaran::find($id);
         $pelajaran->nama_matapelajaran = $request->input('nama_matapelajaran');
         $pelajaran->tingkat_kelas = $request->input('tingkat_kelas');
+        $pelajaran->deskripsi = $request->input('deskripsi');
+        $pelajaran->durasi = $request->input('durasi');
 
         $pelajaran->save();
 
-        return redirect('matapelajaransiswa')->with('success', 'Kepala Sekolah Berhasil Diupdate!');
+        return redirect('matapelajaransiswa')->with('success', 'Data Berhasil Diupdate!');
+    }
+
+    public function delete($id)
+    {
+        $mapelsiswaid = MataPelajaran::find($id);
+        $mapelsiswaid->delete();
+
+        return redirect('matapelajaransiswa')->with('success', 'Data Berhasil Dihapus!');
     }
 
 }

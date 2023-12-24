@@ -30,7 +30,8 @@ class ProfilController extends Controller
             'email' => 'nullable|string|email|max:255',
             'alamat' => 'nullable|string|max:255',
             'no_telepon' => 'nullable|digits_between:9,12',
-            'nip' => 'nullable|numeric|min:18',
+            'nisn' => 'nullable|numeric|digits:10',
+            'nip' => 'nullable|numeric|digits:18',
             'tpt_lahir' => 'nullable|string',
             'tgl_lahir' => 'nullable',
             'jenis_kelamin' => 'nullable|in:Laki-Laki,Perempuan',
@@ -45,24 +46,41 @@ class ProfilController extends Controller
             'alamat.unique' => 'Alamat sudah digunakan, silahkan gunakan alamat lain',
             'no_telepon.digits_between' => 'Nomor telepon harus diisi antara 9-12 digit',
             'no_telepon.unique' => 'Nomor telepon sudah digunakan, silahkan gunakan nomor telepon lain',
-            'nip.numeric' => 'NIP hanya boleh diisi dengan angka',
-            'nip.max' => 'NIP harus diisi dengan 18 digit',
-            'nip.min' => 'NIP harus diisi dengan 18 digit',
-            'nip.unique' => 'NIP sudah digunakan, silahkan gunakan NIP lain',
+            'nisn.numeric' => 'NISN hanya boleh diisi dengan angka',
+            'nisn.digits' => 'NISN harus diisi dengan 10 digit',
+            'nip.digits' => 'NIP harus diisi dengan 18 digit',
+            'nisn.unique' => 'nisn sudah digunakan, silahkan gunakan nisn lain',
             'agama.max' => 'Huruf kelebihan harap kurangi huruf',
             'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
         ]);
 
-        $user->username = $validatedData['username'];
-        $user->alamat = $validatedData['alamat'];
-        $user->no_telepon = $validatedData['no_telepon'];
-        $user->nip = $validatedData['nip'];
-        $user->tpt_lahir = $validatedData['tpt_lahir'];
-        $user->tgl_lahir = $validatedData['tgl_lahir'];
+        if (isset($validatedData['username'])) {
+            $user->username = $validatedData['username'];
+        }
+        if (isset($validatedData['alamat'])) {
+            $user->alamat = $validatedData['alamat'];
+        }
+        if (isset($validatedData['no_telepon'])) {
+            $user->no_telepon = $validatedData['no_telepon'];
+        }
+        if (isset($validatedData['nisn'])) {
+            $user->nisn = $validatedData['nisn'];
+        }
+        if (isset($validatedData['nip'])) {
+            $user->nip = $validatedData['nip'];
+        }
+        if (isset($validatedData['tpt_lahir'])) {
+            $user->tpt_lahir = $validatedData['tpt_lahir'];
+        }
+        if (isset($validatedData['tgl_lahir'])) {
+            $user->tgl_lahir = $validatedData['tgl_lahir'];
+        }
         if (isset($validatedData['jenis_kelamin'])) {
             $user->jenis_kelamin = $validatedData['jenis_kelamin'];
         }
-        $user->agama = $validatedData['agama'];
+        if (isset($validatedData['agama'])) {
+            $user->agama = $validatedData['agama'];
+        }
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotoprofil/', $request->file('foto')->getClientOriginalName());
             $user->foto = $request->file('foto')->getClientOriginalName();

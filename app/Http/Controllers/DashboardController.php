@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Struktur;
+use App\Models\Informasi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +15,7 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $tampilan = Struktur::all();
+        $informasis = Informasi::all();
         $users = User::query();
 
         $currentYear = date('Y');
@@ -31,7 +33,7 @@ class DashboardController extends Controller
             $data[] = $count;
         }
 
-        return view('pages.dashboard.informasisekolah', compact('tampilan', 'categories', 'data'));
+        return view('pages.dashboard.informasisekolah', compact('tampilan', 'categories', 'data', 'informasis'));
     }
 
     public function create()
@@ -90,10 +92,67 @@ class DashboardController extends Controller
     }
 
     public function delete($id)
-    {
-        $guest = Struktur::find($id);
+{
+    $guest = Struktur::find($id);
+    
+    if ($guest) {
         $guest->delete();
-
         return redirect('dashboard')->with('Data Berhasil Dihapus!');
+    } else {
+        return redirect('dashboard')->with('Data tidak ditemukan!');
     }
+}
+
+    public function createinformasi()
+    {
+        return view('pages.Informasi.tambah');
+    }
+
+    public function tambahinformasi(Request $request)
+    {
+        $validateData = $request->validate([
+            'latar_belakang' => 'required',
+            'judul' => 'required',
+        ], [
+            'latar_belakang.required' => 'Informasi Sekolah Harus Diisi',
+            'judul.required' => 'Judul Informasi Harus Diisi',
+        ]);
+
+        $information = Informasi::create($validateData); 
+        return redirect('dashboard')->with('success', 'Data berhasil ditambahkan!');
+    }
+
+    public function editinformasi($id)
+    {
+        $editif = Informasi::find($id);
+        return view('pages.Informasi.edit', compact('editif'));
+    }
+
+    public function updateinformasi(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'judul' => 'nullable',
+            'latar_belakang' => 'nullable',
+        ]);
+
+        $editif = Informasi::find($id);
+        $editif->judul = $request->input('judul');
+        $editif->latar_belakang = $request->input('latar_belakang');
+
+        $editif->save();
+
+        return redirect('dashboard')->with('success', 'Data Berhasil Diupdate!');
+    }
+
+    public function remove($id)
+{
+    $editif = Informasi::find($id);
+    
+    if ($editif) {
+        $editif->delete();
+        return redirect('dashboard')->with('Data Berhasil Dihapus!');
+    } else {
+        return redirect('dashboard')->with('Data tidak ditemukan!');
+    }
+}
 }

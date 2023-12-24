@@ -55,10 +55,32 @@
                                                         <fieldset>
                                                             <legend>Masukkan Data</legend>
                                                             <div class="form-group">
-                                                                <label class="control-label col-sm-2" for="nama_matapelajaran">Nama Pelajaran</label>
+                                                                <label class="control-label col-sm-2" for="nama_matapelajaran">Judul</label>
                                                                 <div class="col-sm-6">
                                                                     <input type="text" name="nama_matapelajaran" id="nama_matapelajaran" class="form-control @error('nama_matapelajaran') is-invalid @enderror" placeholder="Masukkan Judul Silabus" value="{{ $pelajaran->nama_matapelajaran }}">
                                                                     @error('nama_pelajaran')
+                                                                    <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-sm-2" for="deskripsi">Deskripsi</label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan Deskripsi Silabus" value="{{ $pelajaran->deskripsi }}">
+                                                                    @error('deskripsi')
+                                                                    <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-sm-2" for="durasi">Durasi</label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" name="durasi" id="durasi" class="form-control @error('durasi') is-invalid @enderror" placeholder="Masukkan Durasi Silabus" value="{{ $pelajaran->durasi }}">
+                                                                    @error('durasi')
                                                                     <div class="alert alert-danger my-3 col-sm-6" role="alert">
                                                                         {{ $message }}
                                                                     </div>
@@ -112,7 +134,7 @@
             var form = this;
             swal({
                 title: "Berhasil",
-                text: "Data Berhasil Ditambahkan!",
+                text: "Mata Pelajaran Berhasil Diperbaharui!",
                 icon: "success",
             }).then(function() {
                 form.submit();

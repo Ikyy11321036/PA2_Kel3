@@ -12,7 +12,7 @@ class Jadwalmapel extends Model
     protected $table = "jadwal";
     protected $primarykey = "id";
     protected $fillable = [
-        'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran',
+        'hari', 'waktu_pelajaran', 'matapelajaran',
         'kelas_1', 'kelas_2', 'kelas_3', 'kelas_4', 'kelas_5', 'kelas_6',
     ];
 

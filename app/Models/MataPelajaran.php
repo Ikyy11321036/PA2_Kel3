@@ -12,7 +12,7 @@ class MataPelajaran extends Model
     protected $table = "mata_pelajaran";
     protected $primaryKey = "id";
     protected $fillable = [
-        'nama_matapelajaran', 'tingkat_kelas'];
+        'nama_matapelajaran', 'tingkat_kelas', 'deskripsi', 'durasi'];
 
     public function allData()
     {

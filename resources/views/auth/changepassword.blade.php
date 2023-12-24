@@ -195,8 +195,4 @@
         });
     });
 </script>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> origin/master

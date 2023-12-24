@@ -7,28 +7,21 @@
         <div class="page-bar">
             <div class="page-title-breadcrumb">
                 <div class=" pull-left">
-                    <div class="page-title">Tambah Siswa</div>
+                    <div class="page-title">Tambah Pengguna</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('dashboard') }}">Dashboard</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li><a class="parent-item" href="{{ route('dashboard') }}">Siswa</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    <li><a class="parent-item" href="{{ route('dashboard') }}">Pengguna</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li class="active">Tambah Siswa</li>
+                    <li class="active">Tambah Pengguna</li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="tabbable-line">
-                    <!-- <ul class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#tab1" data-bs-toggle="tab"> List View </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab2" data-bs-toggle="tab"> Grid View </a>
-                                    </li>
-                                </ul> -->
+                    
                     <form action="{{ route('menambahsiswa') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="tab-content">
@@ -53,7 +46,7 @@
                                                 <div class="container">
                                                     <form class="form-horizontal">
                                                         <fieldset>
-                                                            <legend>Data Siswa</legend>
+                                                            <legend>Data Pengguna</legend>
                                                             <div class="form-group">
                                                                 <label class="control-label col-sm-2" for="username">Nama Lengkap</label>
                                                                 <div class="col-sm-6">
@@ -229,14 +222,39 @@
     $(document).ready(function() {
         $('form').submit(function(e) {
             e.preventDefault();
-            var form = this;
-            swal({
-                title: "Berhasil",
-                text: "Siswa Berhasil Ditambah!",
-                icon: "success",
-            }).then(function() {
-                form.submit();
+
+            // Menghapus pesan error sebelumnya
+            $('.alert').remove();
+
+            // Memeriksa setiap input field
+            var isValid = true;
+            $('input, select').each(function() {
+                if ($(this).val() === '') {
+                    var fieldName = $(this).attr('name');
+                    var errorMsg = 'Field ' + fieldName + ' harus diisi';
+                    $(this).after('<div class="alert alert-danger">' + errorMsg + '</div>');
+                    isValid = false;
+                }
             });
+
+            // Jika validasi berhasil, submit form
+            if (isValid) {
+                var form = this;
+                swal({
+                    title: "Berhasil",
+                    text: "Siswa Berhasil Ditambahkan!",
+                    icon: "success",
+                }).then(function() {
+                    form.submit();
+                });
+            } else {
+                // Menampilkan SweetAlert bahwa validasi gagal
+                swal({
+                    title: "Validasi Gagal",
+                    text: "Harap periksa kembali pengisian form",
+                    icon: "error",
+                });
+            }
         });
     });
 </script>

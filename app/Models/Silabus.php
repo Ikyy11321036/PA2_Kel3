@@ -12,7 +12,7 @@ class Silabus extends Model
         protected $table = "materi";
         protected $primarykey = "id";
         protected $fillable = [
-            'nama_materi', 'file', 'silabus', 'ppkn', 'indo', 'mtk', 'ipa', 'ips', 'sbk', 'pes','agama'];
+            'nama_materi', 'file', 'silabus', 'tematik', 'mtk', 'english', 'pes', 'agama', 'kelas'];
     
         public function allData()
         {

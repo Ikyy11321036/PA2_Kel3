@@ -7,12 +7,12 @@
 		<div class="page-bar">
 			<div class="page-title-breadcrumb">
 				<div class=" pull-left">
-					<div class="page-title">Siswa</div>
+					<div class="page-title">Pengguna</div>
 				</div>
 				<ol class="breadcrumb page-breadcrumb pull-right">
 					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('dashboard') }}">Dashboard</a>&nbsp;<i class="fa fa-angle-right"></i>
 					</li>
-					<li class="active">Siswa</li>
+					<li class="active">Pengguna</li>
 				</ol>
 			</div>
 		</div>
@@ -29,9 +29,9 @@
                                 </ul> -->
 					<ul class="nav customtab nav-tabs" role="tablist">
 						<li class="nav-item"><a href="#tab1" class="nav-link active" data-bs-toggle="tab">List
-								View</a></li>
+					</a></li>
 						<li class="nav-item"><a href="#tab2" class="nav-link" data-bs-toggle="tab">Grid
-								View</a></li>
+								</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active fontawesome-demo" id="tab1">
@@ -39,7 +39,7 @@
 								<div class="col-md-12">
 									<div class="card card-box">
 										<div class="card-head">
-											<header>Semua Siswa</header>
+											<header>Semua Pengguna</header>
 											<div class="tools">
 												<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 												<a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -53,7 +53,7 @@
 												@if(Auth::check() && Auth::user()->role == 'admin')
 													<div class="btn-group">
 														<a href="{{  route('siswatambah') }}" id="addRow" class="btn btn-primary">
-															Tambah Siswa <i class="fa fa-plus"></i>
+															Tambah Pengguna <i class="fa fa-plus"></i>
 														</a>
 													</div>
 													@endif
@@ -76,7 +76,7 @@
                                                         <th> Nomor Telepon </th>
                                                         <th> Dibuat </th>
 														@auth
-														@if(Auth::user()->role == 'admin')
+														@if(Auth::check() && Auth::user()->role == 'admin')
 														<th> Action </th>
 														@endif
 														@endauth
@@ -102,7 +102,7 @@
                                                         <td>{{ $row->no_telepon }}</td>
 														<td>{{ $row->created_at->diffForHumans() }}</td>
 														@auth
-														@if(Auth::user()->role == 'admin')
+														@if(Auth::check() && Auth::user()->role == 'admin')
 														<td>
 															<a href="{{ route('editstudents', $row->id) }}" class="tblEditBtn">
 																<i class="fa fa-pencil"></i>

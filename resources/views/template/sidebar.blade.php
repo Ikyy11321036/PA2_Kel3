@@ -79,8 +79,20 @@
                         <div class="sidebar-user-details">
                             @auth
                             <div class="user-name">{{ Auth::user()->username }}</div>
-                            <div class="user-role">{{ Auth::user()->role }}</div>
-                            @endauth
+                            @if(Auth::user()->role === 'admin')
+                            @if(Auth::user()->jabatan === 'Kepala Sekolah')
+                            <div class="user-jabatan">Kepala Sekolah</div>
+                            @elseif(Auth::user()->jabatan === 'Guru')
+                            <div class="user-jabatan">Guru</div>
+                            @else
+                            <div>Siswa</div>
+                            @endif
+                            @elseif(Auth::user()->role === 'guru')
+                            <div class="user-jabatan">Guru</div>
+                            @else
+                            <div>Siswa</div>
+                            @endif
+                            @endif
                         </div>
                     </div>
                 </li>
@@ -104,192 +116,43 @@
                                 </a>
                         </li>
                         @auth
-                        <li class="nav-item">
-                            <a href="{{ route('event') }}" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
-                                <span class="title">Manajemen Jadwal</span>
-                            </a>
-                        </li>
+                        
                         @if(Auth::user()->role == 'admin')
                         <li class="nav-item">
                             <a href="#" class="nav-link nav-toggle"> <i data-feather="user"></i>
-                                <span class="title">Data Pengguna</span> <span class="arrow"></span>
+                                <span class="title">Pengguna Kursus</span> <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
+                                
                                 <li class="nav-item">
-                                    <a href="{{ route('kepalasekolah') }}" class="nav-link "> <span class="title">Kepala Sekolah</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('teacher') }}" class="nav-link "> <span class="title">Guru</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('murid') }}" class="nav-link "> <span class="title">Siswa</span>
+                                    <a href="{{ route('murid') }}" class="nav-link "> <span class="title">Pengguna</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         @endauth
-                        <!-- <li class="nav-item">
-                            <a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
-                                <span class="title">Siswa/i</span><span class="arrow"></span></a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a href="{{  route('siswa') }}" class="nav-link "> <span class="title">Semua
-                                            Siswa/i</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('absensisiswa') }}" class="nav-link "> <span class="title">Absensi
-                                            Siswa</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a href="#" class="nav-link nav-toggle"> <i data-feather="book"></i>Mata Pelajaran</a>
-                            </a> -->
-                        <!-- <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="mapel" class="nav-link "> <span class="title">Mata Pelajaran</span>
-                            </a>
-                        </li>
-                    </ul> -->
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link nav-toggle"> <i data-feather="book"></i>
-                                <span class="title">Mata Pelajaran</span> <span class="arrow"></span>
+                                <span class="title">Kursus</span> <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item">
-                                    <a href="{{ route('matapelajaransiswa') }}" class="nav-link "> <span class="title">Mata Pelajaran</span>
+                                    <a href="{{ route('matapelajaransiswa') }}" class="nav-link "> <span class="title">Kursus</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('indexsilabus') }}" class="nav-link "> <span class="title">Silabus</span>
+                                    <a href="{{ route('indexsilabus') }}" class="nav-link "> <span class="title">Materi</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link nav-toggle"> <i data-feather="book-open"></i>
-                        <span class="title">Jadwal Kelas</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('matapelajaran') }}" class="nav-link "> <span class="title">Kelas 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('matapelajaran2') }}" class="nav-link "> <span class="title">Kelas 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('matapelajaran3') }}" class="nav-link "> <span class="title">Kelas 3</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('jadwal4') }}" class="nav-link "> <span class="title">Kelas 4</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('matapelajaran5') }}" class="nav-link "> <span class="title">Kelas 5</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('matapelajaran6') }}" class="nav-link "> <span class="title">Kelas 6</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
-                        <span class="title">Info Sekolah</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('pengumuman') }}" class="nav-link "> <span class="title">Pengumuman</span>
-                            </a>
-                        </li>
-                        <!-- <li class="nav-item">
-                                    <a href="edit_department.html" class="nav-link "> <span class="title">Edit
-                                            Department</span>
-                                    </a>
-                                </li> -->
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link nav-toggle">
-                        <i data-feather="mail"></i>
-                        <span class="title">Raport Siswa</span>
-                        <span class="arrow"></span>
-                        <!-- <span class="label label-rouded label-menu label-danger">new</span> -->
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('raport') }}" class="nav-link ">
-                                <span class="title">Kelas 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('raport2') }}" class="nav-link ">
-                                <span class="title">Kelas 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('raport3') }}" class="nav-link ">
-                                <span class="title">Kelas 3</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('raport4') }}" class="nav-link ">
-                                <span class="title">Kelas 4</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('raport5') }}" class="nav-link ">
-                                <span class="title">Kelas 5</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('raport6') }}" class="nav-link ">
-                                <span class="title">Kelas 6</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                
                 @else
                 <ul class="sub-menu">
-                    <li class="nav-item">
-                        <a href="{{ route('guestaccess') }}" class="nav-link nav-toggle"> <i data-feather="calendar"></i>
-                            <span class="title">Manajemen Jadwal</span>
-                        </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                            <a href="#" class="nav-link nav-toggle"><i data-feather="users"></i>
-                                <span class="title">Siswa/i</span><span class="arrow"></span></a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a href="{{  route('siswa') }}" class="nav-link "> <span class="title">Semua
-                                            Siswa/i</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('absensisiswa') }}" class="nav-link "> <span class="title">Absensi
-                                            Siswa</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
-                    <!-- <li class="nav-item">
-                            <a href="#" class="nav-link nav-toggle"> <i data-feather="book"></i>Mata Pelajaran</a>
-                            </a> -->
-                    <!-- <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="mapel" class="nav-link "> <span class="title">Mata Pelajaran</span>
-                            </a>
-                        </li>
-                    </ul> -->
+                    
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link nav-toggle"> <i data-feather="book"></i>
                             <span class="title">Mata Pelajaran</span> <span class="arrow"></span>
@@ -305,94 +168,8 @@
                             </li>
                         </ul>
                     </li>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link nav-toggle"> <i data-feather="book-open"></i>
-                            <span class="title">Jadwal Kelas</span> <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Kelas 1</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Kelas 2</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Kelas 3</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Kelas 4</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Kelas 5</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Kelas 6</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
-                            <span class="title">Info Sekolah</span> <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link "> <span class="title">Pengumuman</span>
-                                </a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                    <a href="edit_department.html" class="nav-link "> <span class="title">Edit
-                                            Department</span>
-                                    </a>
-                                </li> -->
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link nav-toggle">
-                            <i data-feather="mail"></i>
-                            <span class="title">Raport Siswa</span>
-                            <span class="arrow"></span>
-                            <!-- <span class="label label-rouded label-menu label-danger">new</span> -->
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link ">
-                                    <span class="title">Kelas 1</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link ">
-                                    <span class="title">Kelas 2</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link ">
-                                    <span class="title">Kelas 3</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link ">
-                                    <span class="title">Kelas 4</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link ">
-                                    <span class="title">Kelas 5</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('guestaccess') }}" class="nav-link ">
-                                    <span class="title">Kelas 6</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                </li>
+                    
                 </ul>
                 </li>
             </ul>

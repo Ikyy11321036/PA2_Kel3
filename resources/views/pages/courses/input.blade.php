@@ -7,28 +7,21 @@
         <div class="page-bar">
             <div class="page-title-breadcrumb">
                 <div class=" pull-left">
-                    <div class="page-title">Tambah Mata Pelajaran</div>
+                    <div class="page-title">Tambah Kursus</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('dashboard') }}">Dashboard</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li><a class="parent-item" href="{{ route('matapelajaransiswa') }}">Mata Pelajaran</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    <li><a class="parent-item" href="{{ route('matapelajaransiswa') }}">Kursus</a>&nbsp;<i class="fa fa-angle-right"></i>
                     </li>
-                    <li class="active">Tambah Mata Pelajaran</li>
+                    <li class="active">Tambah Kursus</li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="tabbable-line">
-                    <!-- <ul class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#tab1" data-bs-toggle="tab"> List View </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab2" data-bs-toggle="tab"> Grid View </a>
-                                    </li>
-                                </ul> -->
+                    
                     <form action="{{ route('insertmatapelajaran') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="tab-content">
@@ -55,10 +48,30 @@
                                                         <fieldset>
                                                             <legend>Masukkan Data</legend>
                                                             <div class="form-group">
-                                                                <label class="control-label col-sm-2" for="nama_matapelajaran">Nama Pelajaran</label>
+                                                                <label class="control-label col-sm-2" for="nama_matapelajaran">Judul</label>
                                                                 <div class="col-sm-6">
-                                                                    <input type="text" name="nama_matapelajaran" id="nama_matapelajaran" class="form-control @error('nama_matapelajaran') is-invalid @enderror" placeholder="Masukkan Judul Silabus" value="{{ old('nama_matapelajaran') }}">
+                                                                    <input type="text" name="nama_matapelajaran" id="nama_matapelajaran" class="form-control @error('nama_matapelajaran') is-invalid @enderror" placeholder="Masukkan Judul Kursus" value="{{ old('nama_matapelajaran') }}">
                                                                     @error('nama_pelajaran')
+                                                                    <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="form-group">
+                                                                <label class="control-label col-sm-2" for="deskripsi">Deskripsi</label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukkan Deskripsi Kursus" value="{{ old('deskripsi') }}">
+                                                                    @error('deskripsi')
+                                                                    <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="form-group">
+                                                                <label class="control-label col-sm-2" for="durasi">Durasi</label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" name="durasi" id="durasi" class="form-control @error('durasi') is-invalid @enderror" placeholder="Masukkan Durasi Kursus" value="{{ old('durasi') }}">
+                                                                    @error('durasi')
                                                                     <div class="alert alert-danger my-3 col-sm-6" role="alert">
                                                                         {{ $message }}
                                                                     </div>
@@ -77,14 +90,20 @@
                                                                         <option value="Kelas 5" {{ old('tingkat_kelas') == 'Kelas 5' ? 'selected' : '' }}>Kelas 5</option>
                                                                         <option value="Kelas 6" {{ old('tingkat_kelas') == 'Kelas 6' ? 'selected' : '' }}>Kelas 6</option>
                                                                     </select>
-                                                                </div>
-                                                                <br>
-                                                                <div class="form-group">
-                                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                                        <button type="submit" class="btn btn-success">Tambah</button>
-                                                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                                                    @error('tingkat_kelas')
+                                                                    <div class="alert alert-danger my-3 col-sm-6" role="alert">
+                                                                        {{ $message }}
                                                                     </div>
+                                                                    @enderror
                                                                 </div>
+                                                            </div>
+                                                            <br>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-offset-2 col-sm-10">
+                                                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                                                </div>
+                                                            </div>
                                                         </fieldset>
                                                     </form>
                                                 </div>
@@ -94,7 +113,6 @@
                                 </div>
                             </div>
                         </div>
-                    
                 </div>
             </div>
         </div>
@@ -110,18 +128,41 @@
     $(document).ready(function() {
         $('form').submit(function(e) {
             e.preventDefault();
-            var form = this;
-            swal({
-                title: "Berhasil",
-                text: "Data Berhasil Ditambahkan!",
-                icon: "success",
-            }).then(function() {
-                form.submit();
+
+            // Menghapus pesan error sebelumnya
+            $('.alert').remove();
+
+            // Memeriksa setiap input field
+            var isValid = true;
+            $('input, select').each(function() {
+                if ($(this).val() === '') {
+                    var fieldName = $(this).attr('name');
+                    var errorMsg = 'Field ' + fieldName + ' harus diisi';
+                    $(this).after('<div class="alert alert-danger">' + errorMsg + '</div>');
+                    isValid = false;
+                }
             });
+
+            // Jika validasi berhasil, submit form
+            if (isValid) {
+                var form = this;
+                swal({
+                    title: "Berhasil",
+                    text: "Mata Pelajaran Berhasil Ditambahkan!",
+                    icon: "success",
+                }).then(function() {
+                    form.submit();
+                });
+            } else {
+                // Menampilkan SweetAlert bahwa validasi gagal
+                swal({
+                    title: "Validasi Gagal",
+                    text: "Harap periksa kembali pengisian form",
+                    icon: "error",
+                });
+            }
         });
     });
 </script>
-
-
 
 @endsection

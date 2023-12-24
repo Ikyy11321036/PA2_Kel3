@@ -42,12 +42,17 @@ class PengumumanController extends Controller
             $validateData['file'] = $filename;
         } else {
             $validateData['file'] = null;
+        }
 
-            $peng = Pengumuman::create($validateData);
+        $peng = Pengumuman::create($validateData);
 
-            return redirect()->route('pengumuman');
+        if ($peng) {
+            return redirect()->route('pengumuman')->with('success', 'Pengumuman berhasil ditambahkan.');
+        } else {
+            return back()->with('error', 'Gagal menambahkan pengumuman. Silakan coba lagi.');
         }
     }
+
 
     public function melihat($id)
     {

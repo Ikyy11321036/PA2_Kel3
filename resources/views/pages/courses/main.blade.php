@@ -6,13 +6,13 @@
             <div class="page-bar">
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
-                        <div class="page-title">Mata Pelajaran</div>
+                        <div class="page-title">Kursus</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
                                 href="{{ route('dashboard') }}">Dashboard</a>&nbsp;<i class="fa fa-angle-right"></i>
                         </li>
-                        <li class="active">Mata Pelajaran</li>
+                        <li class="active">Kursus</li>
                     </ol>
                 </div>
             </div>
@@ -20,8 +20,7 @@
                 <div class="col-md-12">
                     <div class="tabbable-line">
                         <ul class="nav customtab nav-tabs" role="tablist">
-                            <li class="nav-item"><a href="#tab1" class="nav-link active" data-bs-toggle="tab">List
-                                    View</a></li>
+                            <li class="nav-item"><a href="#tab1" class="nav-link active" data-bs-toggle="tab">Kursus</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active fontawesome-demo" id="tab1">
@@ -29,7 +28,7 @@
                                     <div class="col-md-12">
                                         <div class="card card-box">
                                             <div class="card-head">
-                                                <header>Semua Mata Pelajaran</header>
+                                                <header>Semua Kursus</header>
                                                 <div class="tools">
                                                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                                     <a class="t-collapse btn-color fa fa-chevron-down"
@@ -45,7 +44,7 @@
                                                                 <div class="btn-group">
                                                                     <a href="{{ route('tambahmapels') }}" id="addRow"
                                                                         class="btn btn-primary">
-                                                                        Tambah Mata Pelajaran <i class="fa fa-plus"></i>
+                                                                        Tambah Kursus <i class="fa fa-plus"></i>
                                                                     </a>
                                                                 </div>
                                                             @endif
@@ -59,7 +58,9 @@
                                                     <thead>
                                                         <tr>
                                                             <th> No </th>
-                                                            <th> Nama Mata Pelajaran </th>
+                                                            <th> Judul </th>
+                                                            <th> Deskripsi </th>
+                                                            <th> Durasi </th>
                                                             <th> Kelas </th>
                                                             @if (Auth::check() && Auth::user()->role == 'admin')
                                                                 <th> Action </th>
@@ -74,6 +75,8 @@
                                                             <tr class="odd gradeX">
                                                                 <td>{{ $no++ }}</td>
                                                                 <td class="left">{{ $rowmapel->nama_matapelajaran }}</td>
+                                                                <td class="left">{{ $rowmapel->deskripsi }}</td>
+                                                                <td class="left">{{ $rowmapel->durasi }}</td>
                                                                 <td>{{ $rowmapel->tingkat_kelas }}</td>
                                                                 @auth
                                                                     @if (Auth::user()->role == 'admin')

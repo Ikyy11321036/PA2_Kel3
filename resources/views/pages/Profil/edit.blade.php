@@ -93,45 +93,45 @@
                                                                     @enderror
                                                                 </div>
                                                                 @if(Auth::user()->role == 'admin')
-                                                                <div class="col-md-12"><label class="labels" for="nip">NIP</label><input type="text" class="form-control" placeholder="enter address line 1" value="{{ $user->nip }}" name="nip"></div>
+                                                                <div class="col-md-12"><label class="labels" for="nip">NIP</label><input type="text" class="form-control" placeholder="NIP" value="{{ $user->nip }}" name="nip"></div>
                                                                 @error('nip')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}
                                                                 </div>
                                                                 @enderror
                                                                 @else
-                                                                <div class="col-md-12"><label class="labels" for="nisn">NISN</label><input type="text" class="form-control" placeholder="enter address line 1" value="{{ $user->nisn }}" name="nisn"></div>
+                                                                <div class="col-md-12"><label class="labels" for="nisn">NISN</label><input type="text" class="form-control" placeholder="NISN" value="{{ $user->nisn }}" name="nisn"></div>
                                                                 @error('nisn')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}
                                                                 </div>
                                                                 @enderror
                                                                 @endif
-                                                                <div class="col-md-12"><label class="labels" for="no_telepon">Nomor Telepon</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{ $user->no_telepon }}" name="no_telepon"></div>
+                                                                <div class="col-md-12"><label class="labels" for="no_telepon">Nomor Telepon</label><input type="text" class="form-control" placeholder="Nomor Telepon" value="{{ $user->no_telepon }}" name="no_telepon"></div>
                                                                 @error('no_telepon')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}
                                                                 </div>
                                                                 @enderror
-                                                                <div class="col-md-12"><label class="labels" for="tpt_lahir">Tempat Lahir</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{ $user->tpt_lahir }}" name="tpt_lahir"></div>
+                                                                <div class="col-md-12"><label class="labels" for="tpt_lahir">Tempat Lahir</label><input type="text" class="form-control" placeholder="Tempat Lahir" value="{{ $user->tpt_lahir }}" name="tpt_lahir"></div>
                                                                 @error('tpt_lahir')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}
                                                                 </div>
                                                                 @enderror
-                                                                <div class="col-md-12"><label class="labels" for="tgl_lahir">Tanggal Lahir</label><input type="date" class="form-control" placeholder="enter address line 2" value="{{ $user->tgl_lahir }}" name="tgl_lahir"></div>
+                                                                <div class="col-md-12"><label class="labels" for="tgl_lahir">Tanggal Lahir</label><input type="date" class="form-control" placeholder="Tanggal Lahir" value="{{ $user->tgl_lahir }}" name="tgl_lahir"></div>
                                                                 @error('tgl_lahir')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}
                                                                 </div>
                                                                 @enderror
-                                                                <div class="col-md-12"><label class="labels" for="agama">Agama</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{ $user->agama }}" name="agama"></div>
+                                                                <div class="col-md-12"><label class="labels" for="agama">Agama</label><input type="text" class="form-control" placeholder="Agama" value="{{ $user->agama }}" name="agama"></div>
                                                                 @error('agama')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}
                                                                 </div>
                                                                 @enderror
-                                                                <div class="col-md-12"><label class="labels" for="foto">Gambar</label><input type="file" class="form-control" placeholder="enter address line 2" value="{{ $user->foto }}" name="foto"></div>
+                                                                <div class="col-md-12"><label class="labels" for="foto">Gambar</label><input type="file" class="form-control" placeholder="Gambar" value="{{ $user->foto }}" name="foto"></div>
                                                                 @error('foto')
                                                                 <div class="alert alert-danger my-3 col-sm-6 " role="alert">
                                                                     {{ $message }}

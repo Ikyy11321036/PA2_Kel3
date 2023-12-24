@@ -16,14 +16,14 @@
 		<div class="page-bar">
 			<div class="page-title-breadcrumb">
 				<div class=" pull-left">
-					<div class="page-title">Silabus Penjas</div>
+					<div class="page-title">Materi Penjas</div>
 				</div>
 				<ol class="breadcrumb page-breadcrumb pull-right">
 					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('dashboard') }}">Dashboard</a>&nbsp;<i class="fa fa-angle-right"></i>
 					</li>
 					<li><a class="parent-item" href="{{ route('indexsilabus') }}">Mata Pelajaran</a>&nbsp;<i class="fa fa-angle-right"></i>
 					</li>
-					<li class="active">Silabus</li>
+					<li class="active">Materi</li>
 				</ol>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 								<div class="col-md-12">
 									<div class="card card-box">
 										<div class="card-head">
-											<header>Silabus</header>
+											<header>Materi</header>
 											<div class="tools">
 												<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 												<a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -57,7 +57,7 @@
 												@if(Auth::check() && Auth::user()->role == 'admin')
                                                 <div class="btn-group">
                                                     <a href="{{  route('silabuspenjas') }}" id="addRow" class="btn btn-primary">
-                                                        Tambah Silabus <i class="fa fa-plus"></i>
+                                                        Tambah Materi <i class="fa fa-plus"></i>
                                                     </a>
 												</div>
 												@endif
@@ -67,10 +67,12 @@
 										<table>
 												<tbody>
 													<tr>
+													@if(Auth::user()->role == 'admin' || (Auth::user()->role != 'admin' && Auth::user()->kelas == $rowagama->kelas))
 														<td>
-															<h4>Download Silabus: <a href="{{ asset('filesilabus/'.$rowpenjas->file) }}"> {{ $rowpenjas->nama_materi }} </a></h4>
-															<h5>Mengenai Silabus: {{ $rowpenjas->silabus }}</h5>
+															<h4>Download Materi: <a href="{{ asset('filesilabus/'.$rowpenjas->file) }}"> {{ $rowpenjas->nama_materi }} </a></h4>
+															<h5>Mengenai Materi: {{ $rowpenjas->silabus }}</h5>
 														</td>
+														@endif
 														@auth
 														@if(Auth::user()->role == 'admin')
 														<td>															
@@ -111,7 +113,7 @@
 		var silabuspenjasid = $(this).attr('data-id');
 		swal({
 				title: "Apakah Anda Yakin?",
-				text: "Anda Akan Menghapus Silabus Tersebut",
+				text: "Anda Akan Menghapus Materi Tersebut",
 				icon: "warning",
 				buttons: true,
 				dangerMode: true,
@@ -119,11 +121,11 @@
 			.then((willDelete) => {
 				if (willDelete) {
 					window.location = "/deletesilabuspenjas/" + silabuspenjasid;
-					swal("Silabus Berhasil Dihapus", {
+					swal("Materi Berhasil Dihapus", {
 						icon: "success",
 					});
 				} else {
-					swal("Silabus Tidak Jadi Dihapus");
+					swal("Materi Tidak Jadi Dihapus");
 				}
 			});
 	});

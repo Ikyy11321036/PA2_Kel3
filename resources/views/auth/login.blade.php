@@ -18,7 +18,7 @@
     background-image: url('/slash/pencil.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    
+
   }
 
   .wrapper {
@@ -152,7 +152,7 @@
       @endif
       <div class="spasi1">
         <div class="input-box">
-          <input id="name" type="text" name="username" placeholder="Nama Lengkap" value="{{ old('name') }}" autofocus autocomplete="name">
+          <input id="name" type="text" name="username" placeholder="Nama Lengkap" value="{{ old('username') }}" autofocus autocomplete="name">
           @error('username')
           <div class="alert alert-danger my-3 col-sm-6" role="alert">
             {{ $message }}
@@ -162,7 +162,7 @@
       </div>
       <div class="spasi2">
         <div class="input-box">
-          <input id="password" type="password" name="password" placeholder="Kata Sandi" name="password" autocomplete="new-password">
+          <input id="password" type="password" name="password" placeholder="Kata Sandi" autocomplete="new-password">
           @error('password')
           <div class="alert alert-danger my-3 col-sm-6" role="alert">
             {{ $message }}
@@ -172,33 +172,68 @@
       </div>
       <div class="spasi3">
         <div class="input-box button">
-          <input type="submit" name="button" value="Kirim">
-        </div>
-        <div class="text">
-          <!-- <h3>Daftarkan Akun Baru <a href="{{ route('register') }}">Siswa</a></h3> -->
-          <h3>Masuk Sebagai Akun <a href="{{ route('guest') }}">Tamu</a></h3>
+          <input type="submit" name="button" value="Kirim" onclick="login()">
         </div>
       </div>
-    </form>
+      <div class="text">
+        <!-- <h3>Daftarkan Akun Baru <a href="{{ route('register') }}">Siswa</a></h3> -->
+        <h3>Masuk Sebagai Akun <a href="{{ route('guest') }}">Tamu</a></h3>
+      </div>
+  </div>
+  </form>
   </div>
 </body>
+
 </html>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
 
 <script>
-  $(document).ready(function() {
-    $('form').submit(function(e) {
-      e.preventDefault();
-      var form = this;
+  function login() {
+    var username = $('#name').val();
+    var password = $('#password').val();
+
+    // Lakukan validasi sesuai kebutuhan
+    if (username === '' || password === '') {
       swal({
-        title: "Berhasil Login",
-        text: "Selamat Datang",
-        icon: "success",
-      }).then(function() {
-        form.submit();
+        title: "Gagal Login",
+        text: "Harap isi semua field",
+        icon: "error",
       });
-    });
-  });
+    } else {
+      // Kirim permintaan login ke server
+      // Anda perlu menggantikan URL dan metode dengan yang sesuai untuk permintaan login ke server
+      $.post('/login', {
+          username: username,
+          password: password
+        })
+        .done(function(response) {
+          // Tangani respon dari server
+          if (response.success) {
+            swal({
+              title: "Berhasil Login",
+              text: "Selamat Datang",
+              icon: "success",
+            }).then(function() {
+              // Redirect ke halaman setelah login berhasil
+              window.location.href = '/dashboard';
+            });
+          } else {
+            swal({
+              title: "Gagal Login",
+              text: "Username atau password salah",
+              icon: "error",
+            });
+          }
+        })
+        .fail(function() {
+          swal({
+            title: "Gagal Login",
+            text: "Terjadi kesalahan saat memproses permintaan login",
+            icon: "error",
+          });
+        });
+    }
+  }
 </script>

@@ -16,7 +16,7 @@ class JadwalmapelController extends Controller
     // Jadwal Untuk Kelas 1
     public function index()
     {
-        $data = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_1')
+        $data = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_1')
         ->where('kelas_1', 'true')
         ->get();
         return view('pages.Jadwal.jadwalmapel', compact('data'));
@@ -31,33 +31,13 @@ class JadwalmapelController extends Controller
     public function insertdata1(Request $request)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
             'kelas_1',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
@@ -78,42 +58,18 @@ class JadwalmapelController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
         $murid1 = JadwalMapel::find($id);
-        $murid1->senin = $request->input('senin');
-        $murid1->selasa = $request->input('selasa');
-        $murid1->rabu = $request->input('rabu');
-        $murid1->kamis = $request->input('kamis');
-        $murid1->jumat = $request->input('jumat');
-        $murid1->sabtu = $request->input('sabtu');
+        $murid1->hari = $request->input('hari');
+        $murid1->matapelajaran = $request->input('matapelajaran');
         $murid1->waktu_pelajaran = $request->input('waktu_pelajaran');
 
         $murid1->save();
@@ -131,7 +87,7 @@ class JadwalmapelController extends Controller
 
     public function exportpdf()
     {
-        $data = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_1')
+        $data = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_1')
         ->where('kelas_1', 'true')
         ->get();
 
@@ -144,7 +100,7 @@ class JadwalmapelController extends Controller
     // Jadwal Untuk Kelas 3
     public function index3()
     {
-        $data3 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_3')
+        $data3 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_3')
         ->where('kelas_3', 'true')
         ->get();
         return view('pages.Jadwal.jadwalmapel3', compact('data3'));
@@ -159,33 +115,13 @@ class JadwalmapelController extends Controller
     public function insertdata3(Request $request)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
             'kelas_3',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
@@ -206,42 +142,18 @@ class JadwalmapelController extends Controller
     public function update3(Request $request, $id)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
         $murid3 = JadwalMapel::find($id);
-        $murid3->senin = $request->input('senin');
-        $murid3->selasa = $request->input('selasa');
-        $murid3->rabu = $request->input('rabu');
-        $murid3->kamis = $request->input('kamis');
-        $murid3->jumat = $request->input('jumat');
-        $murid3->sabtu = $request->input('sabtu');
+        $murid3->hari = $request->input('hari');
+        $murid3->matapelajaran = $request->input('matapelajaran');
         $murid3->waktu_pelajaran = $request->input('waktu_pelajaran');
 
         $murid3->save();
@@ -259,7 +171,7 @@ class JadwalmapelController extends Controller
 
     public function exportpdf3()
     {
-        $data3 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_3')
+        $data3 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_3')
         ->where('kelas_3', 'true')
         ->get();
 
@@ -272,7 +184,7 @@ class JadwalmapelController extends Controller
     // Jadwal Untuk Kelas 2
     public function index2()
     {
-        $data2 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_2')
+        $data2 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_2')
         ->where('kelas_2', 'true')
         ->get();
         return view('pages.Jadwal.jadwalmapel2', compact('data2'));
@@ -287,33 +199,13 @@ class JadwalmapelController extends Controller
     public function insertdata2(Request $request)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
             'kelas_2',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
@@ -334,42 +226,18 @@ class JadwalmapelController extends Controller
     public function update2(Request $request, $id)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
         $murid2 = JadwalMapel::find($id);
-        $murid2->senin = $request->input('senin');
-        $murid2->selasa = $request->input('selasa');
-        $murid2->rabu = $request->input('rabu');
-        $murid2->kamis = $request->input('kamis');
-        $murid2->jumat = $request->input('jumat');
-        $murid2->sabtu = $request->input('sabtu');
+        $murid2->hari = $request->input('hari');
+        $murid2->matapelajaran = $request->input('matapelajaran');
         $murid2->waktu_pelajaran = $request->input('waktu_pelajaran');
 
         $murid2->save();
@@ -387,7 +255,7 @@ class JadwalmapelController extends Controller
 
     public function exportpdf2()
     {
-        $data2 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_2')
+        $data2 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_2')
         ->where('kelas_2', 'true')
         ->get();
 
@@ -400,7 +268,7 @@ class JadwalmapelController extends Controller
     // Jadwal Untuk Kelas 4
     public function index4()
     {
-        $data4 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_4')
+        $data4 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_4')
         ->where('kelas_4', 'true')
         ->get();
         return view('pages.Jadwal.jadwalmapel4', compact('data4'));
@@ -415,33 +283,13 @@ class JadwalmapelController extends Controller
     public function insertdata4(Request $request)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
             'kelas_4',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
@@ -462,42 +310,18 @@ class JadwalmapelController extends Controller
     public function update4(Request $request, $id)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
         $murid4 = JadwalMapel::find($id);
-        $murid4->senin = $request->input('senin');
-        $murid4->selasa = $request->input('selasa');
-        $murid4->rabu = $request->input('rabu');
-        $murid4->kamis = $request->input('kamis');
-        $murid4->jumat = $request->input('jumat');
-        $murid4->sabtu = $request->input('sabtu');
+        $murid4->hari = $request->input('hari');
+        $murid4->matapelajaran = $request->input('matapelajaran');
         $murid4->waktu_pelajaran = $request->input('waktu_pelajaran');
 
         $murid4->save();
@@ -515,7 +339,7 @@ class JadwalmapelController extends Controller
 
     public function exportpdf4()
     {
-        $data4 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_4')
+        $data4 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_4')
         ->where('kelas_4', 'true')
         ->get();
 
@@ -528,7 +352,7 @@ class JadwalmapelController extends Controller
     // Jadwal Untuk Kelas 5
     public function index5()
     {
-        $data5 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_5')
+        $data5 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_5')
         ->where('kelas_5', 'true')
         ->get();
         return view('pages.Jadwal.jadwalmapel5', compact('data5'));
@@ -543,33 +367,13 @@ class JadwalmapelController extends Controller
     public function insertdata5(Request $request)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
             'kelas_5',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
@@ -590,42 +394,18 @@ class JadwalmapelController extends Controller
     public function update5(Request $request, $id)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
         $murid5 = JadwalMapel::find($id);
-        $murid5->senin = $request->input('senin');
-        $murid5->selasa = $request->input('selasa');
-        $murid5->rabu = $request->input('rabu');
-        $murid5->kamis = $request->input('kamis');
-        $murid5->jumat = $request->input('jumat');
-        $murid5->sabtu = $request->input('sabtu');
+        $murid5->hari = $request->input('hari');
+        $murid5->matapelajaran = $request->input('matapelajaran');
         $murid5->waktu_pelajaran = $request->input('waktu_pelajaran');
 
         $murid5->save();
@@ -643,7 +423,7 @@ class JadwalmapelController extends Controller
 
     public function exportpdf5()
     {
-        $data5 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_5')
+        $data5 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_5')
         ->where('kelas_5', 'true')
         ->get();
 
@@ -656,7 +436,7 @@ class JadwalmapelController extends Controller
     // Jadwal Untuk Kelas 6
     public function index6()
     {
-        $data6 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_6')
+        $data6 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_6')
         ->where('kelas_6', 'true')
         ->get();
         return view('pages.Jadwal.jadwalmapel6', compact('data6'));
@@ -671,33 +451,13 @@ class JadwalmapelController extends Controller
     public function insertdata6(Request $request)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
             'kelas_6',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
@@ -718,42 +478,18 @@ class JadwalmapelController extends Controller
     public function update6(Request $request, $id)
     {
         $validateData = $request->validate([
-            'senin' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'selasa' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'rabu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'kamis' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'jumat' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
-            'sabtu' => ['required', 'string', 'max:20', 'regex:/^[a-zA-Z\s]+$/'],
+            'hari' => 'required',
+            'matapelajaran' => 'required',
             'waktu_pelajaran' => 'required',
         ], [
-            'senin.required' => 'Kolom Senin harus diisi',
-            'senin.max' => 'Kolom Senin tidak boleh lebih dari :max karakter',
-            'senin.regex' => 'Kolom Senin hanya boleh diisi dengan huruf dan spasi',
-            'selasa.required' => 'Kolom Selasa harus diisi',
-            'selasa.max' => 'Kolom Selasa tidak boleh lebih dari :max karakter',
-            'selasa.regex' => 'Kolom Selasa hanya boleh diisi dengan huruf dan spasi',
-            'rabu.required' => 'Kolom Rabu harus diisi',
-            'rabu.max' => 'Kolom Rabu tidak boleh lebih dari :max karakter',
-            'rabu.regex' => 'Kolom Rabu hanya boleh diisi dengan huruf dan spasi',
-            'kamis.required' => 'Kolom Kamis harus diisi',
-            'kamis.max' => 'Kolom Kamis tidak boleh lebih dari :max karakter',
-            'kamis.regex' => 'Kolom Kamis hanya boleh diisi dengan huruf dan spasi',
-            'jumat.required' => 'Kolom Jumat harus diisi',
-            'jumat.max' => 'Kolom Jumat tidak boleh lebih dari :max karakter',
-            'jumat.regex' => 'Kolom Jumat hanya boleh diisi dengan huruf dan spasi',
-            'sabtu.required' => 'Kolom Sabtu harus diisi',
-            'sabtu.max' => 'Kolom Sabtu tidak boleh lebih dari :max karakter',
-            'sabtu.regex' => 'Kolom Sabtu hanya boleh diisi dengan huruf dan spasi',
+            'matapelajaran.required' => 'Mata pelajaran harus diisi',
+            'hari.required' => 'Hari harus diisi',
             'waktu_pelajaran.required' => 'Kolom Waktu harus diisi',
         ]);
 
         $murid6 = JadwalMapel::find($id);
-        $murid6->senin = $request->input('senin');
-        $murid6->selasa = $request->input('selasa');
-        $murid6->rabu = $request->input('rabu');
-        $murid6->kamis = $request->input('kamis');
-        $murid6->jumat = $request->input('jumat');
-        $murid6->sabtu = $request->input('sabtu');
+        $murid6->hari = $request->input('hari');
+        $murid6->matapelajaran = $request->input('matapelajaran');
         $murid6->waktu_pelajaran = $request->input('waktu_pelajaran');
 
         $murid6->save();
@@ -771,7 +507,7 @@ class JadwalmapelController extends Controller
 
     public function exportpdf6()
     {
-        $data6 = Jadwalmapel::select('senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'waktu_pelajaran', 'id', 'kelas_6')
+        $data6 = Jadwalmapel::select('hari', 'matapelajaran', 'waktu_pelajaran', 'id', 'kelas_6')
         ->where('kelas_6', 'true')
         ->get();
 
